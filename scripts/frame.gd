@@ -2,8 +2,8 @@ extends TextureRect
 
 class_name Frame
 
-var width: int = 16
-var height: int = 16
+@export var width: int = 32
+@export var height: int = 32
 
 var img: Image
 
@@ -50,7 +50,6 @@ func get_pix_from_global_position(pos: Vector2) -> Vector2:
 		
 # NOTE: Probably doesn't work if frame is rotated
 func is_global_position_in_bounds(pos: Vector2) -> bool:
-	print(get_rect().has_point(pos))
 	return get_rect().has_point(pos)
 	
 func is_pix_in_bounds(pos: Vector2) -> bool:

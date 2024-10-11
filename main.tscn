@@ -21,46 +21,46 @@ frame = NodePath("../CanvasLayer/Frame")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Frame" type="TextureRect" parent="CanvasLayer"]
-offset_left = 48.0
-offset_top = 64.0
-offset_right = 64.0
-offset_bottom = 80.0
-scale = Vector2(16, 16)
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 48.0
+offset_bottom = 56.0
+scale = Vector2(10, 10)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Frame"]
 z_index = -1
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 16.0
+offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/Frame"]
 z_index = -1
 layout_mode = 0
-offset_left = 8.0
-offset_right = 16.0
-offset_bottom = 8.0
+offset_left = 16.0
+offset_right = 32.0
+offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
 [node name="Panel3" type="Panel" parent="CanvasLayer/Frame"]
 z_index = -1
 layout_mode = 0
-offset_top = 8.0
-offset_right = 8.0
-offset_bottom = 16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
 [node name="Panel4" type="Panel" parent="CanvasLayer/Frame"]
 z_index = -1
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
