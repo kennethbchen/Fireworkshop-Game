@@ -1,13 +1,10 @@
 extends TextureRect
 
-@onready var display: TextureRect = $TextureRect
-
 var width: int = 16
 var height: int = 16
 
 var img: Image
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	img = Image.create(width, height, false, Image.FORMAT_BPTC_RGBA)
@@ -24,7 +21,5 @@ func _ready():
 	print(texture.get_image().get_pixel(0,0))
 	size = Vector2(width, height)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
