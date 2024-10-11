@@ -1,5 +1,7 @@
 extends TextureRect
 
+class_name Frame
+
 var width: int = 16
 var height: int = 16
 
@@ -18,10 +20,17 @@ func _ready():
 	
 	texture = ImageTexture.create_from_image(img)
 	
-	print(texture.get_image().get_pixel(0,0))
 	size = Vector2(width, height)
 
-
+func set_pixel_from_global_position(pos: Vector2, color: Color):
+	
+	if not is_global_position_in_bounds(pos):
+		return
+	
+	var pix_position: Vector2 = get_pix_from_global_position(pos)
+	img.set_pixel(pix_position.x, pix_position.y, color)
+	texture.update(img)
+	
 # NOTE: 0 Indexed
 func get_pix_from_global_position(pos: Vector2) -> Vector2:
 	
@@ -32,7 +41,7 @@ func get_pix_from_global_position(pos: Vector2) -> Vector2:
 	var relative_position: Vector2 = pos - global_position
 	
 	# Account for scale of frame
-	relative_position *= scale
+	relative_position /= scale
 	relative_position = relative_position.floor()
 
 	return relative_position
@@ -41,6 +50,7 @@ func get_pix_from_global_position(pos: Vector2) -> Vector2:
 		
 # NOTE: Probably doesn't work if frame is rotated
 func is_global_position_in_bounds(pos: Vector2) -> bool:
+	print(get_rect().has_point(pos))
 	return get_rect().has_point(pos)
 	
 func is_pix_in_bounds(pos: Vector2) -> bool:
@@ -51,8 +61,6 @@ func is_pix_in_bounds(pos: Vector2) -> bool:
 		return false
 	
 	return true
-
-
 
 func _process(delta):
 	pass

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
-[ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="1_hb8hu"]
+[ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
 [ext_resource type="Script" path="res://scripts/frame.gd" id="3_c1rli"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6s55"]
@@ -14,25 +14,27 @@ bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 [node name="DebugCommands" type="Node" parent="."]
 script = ExtResource("1_255dg")
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(144, 144)
-texture = ExtResource("1_hb8hu")
+[node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("frame")]
+script = ExtResource("2_3u3oc")
+frame = NodePath("../CanvasLayer/Frame")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Frame" type="TextureRect" parent="CanvasLayer"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 24.0
-offset_bottom = 24.0
-scale = Vector2(4, 4)
+offset_left = 48.0
+offset_top = 64.0
+offset_right = 64.0
+offset_bottom = 80.0
+scale = Vector2(16, 16)
 script = ExtResource("3_c1rli")
+metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Frame"]
 z_index = -1
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
 [node name="Panel2" type="Panel" parent="CanvasLayer/Frame"]
@@ -41,6 +43,7 @@ layout_mode = 0
 offset_left = 8.0
 offset_right = 16.0
 offset_bottom = 8.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
 [node name="Panel3" type="Panel" parent="CanvasLayer/Frame"]
@@ -49,6 +52,7 @@ layout_mode = 0
 offset_top = 8.0
 offset_right = 8.0
 offset_bottom = 16.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
 [node name="Panel4" type="Panel" parent="CanvasLayer/Frame"]
@@ -58,4 +62,5 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 16.0
 offset_bottom = 16.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
