@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=4 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="1_hb8hu"]
+[ext_resource type="Script" path="res://scripts/frame.gd" id="3_c1rli"]
 
 [node name="Main" type="Node2D"]
 
@@ -9,5 +10,20 @@
 script = ExtResource("1_255dg")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(176, 168)
+position = Vector2(144, 144)
 texture = ExtResource("1_hb8hu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Frame" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 160.0
+offset_top = 128.0
+offset_right = 200.0
+offset_bottom = 168.0
+script = ExtResource("3_c1rli")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Frame"]
+offset_right = 16.0
+offset_bottom = 16.0
