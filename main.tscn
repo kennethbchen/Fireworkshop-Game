@@ -21,11 +21,11 @@ frame = NodePath("../CanvasLayer/Frame")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Frame" type="TextureRect" parent="CanvasLayer"]
-offset_left = 16.0
-offset_top = 24.0
-offset_right = 48.0
-offset_bottom = 56.0
-scale = Vector2(10, 10)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(9, 9)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
 
