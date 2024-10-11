@@ -1,4 +1,4 @@
-extends Control
+extends TextureRect
 
 @onready var display: TextureRect = $TextureRect
 
@@ -6,7 +6,6 @@ var width: int = 16
 var height: int = 16
 
 var img: Image
-var texture: ImageTexture
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,9 +22,7 @@ func _ready():
 	texture = ImageTexture.create_from_image(img)
 	
 	print(texture.get_image().get_pixel(0,0))
-	
-	display.texture = texture
-	display.size= Vector2(width, height)
+	size = Vector2(width, height)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
