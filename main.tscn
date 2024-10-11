@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=6 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="1_hb8hu"]
 [ext_resource type="Script" path="res://scripts/frame.gd" id="3_c1rli"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6s55"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvl0s"]
+bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 
 [node name="Main" type="Node2D"]
 
@@ -20,5 +25,37 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 24.0
 offset_bottom = 24.0
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 script = ExtResource("3_c1rli")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Frame"]
+z_index = -1
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
+
+[node name="Panel2" type="Panel" parent="CanvasLayer/Frame"]
+z_index = -1
+layout_mode = 0
+offset_left = 8.0
+offset_right = 16.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/Frame"]
+z_index = -1
+layout_mode = 0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 16.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
+
+[node name="Panel4" type="Panel" parent="CanvasLayer/Frame"]
+z_index = -1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
