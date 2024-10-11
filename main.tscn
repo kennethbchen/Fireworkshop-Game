@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=3 format=3 uid="uid://i7vtjolmol5c"]
 
+[ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="1_hb8hu"]
 
 [node name="Main" type="Node2D"]
+
+[node name="DebugCommands" type="Node" parent="."]
+script = ExtResource("1_255dg")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(176, 168)
