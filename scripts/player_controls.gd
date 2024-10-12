@@ -2,6 +2,8 @@ extends Node
 
 @export var frame: Frame
 
+@export var tools: Dictionary
+
 @export var current_tool: Tool
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +22,11 @@ func _input(event):
 		
 	if event is InputEventMouseMotion: 
 		current_tool.on_mouse_motion(event.position, frame)
+
+func change_tool_from_name(tool_name: String):
+	if tool_name in tools:
+		change_tool(get_node(tools[tool_name]))
+	
 
 func change_tool(new_tool: Tool):
 	current_tool.on_tool_unselected()
