@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=8 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
 [ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
 [ext_resource type="Script" path="res://scripts/frame.gd" id="3_c1rli"]
+[ext_resource type="Script" path="res://scripts/tools/pencil_tool.gd" id="3_ovh5a"]
+[ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6s55"]
 
@@ -14,9 +16,16 @@ bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 [node name="DebugCommands" type="Node" parent="."]
 script = ExtResource("1_255dg")
 
-[node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("frame")]
+[node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("frame", "current_tool")]
 script = ExtResource("2_3u3oc")
 frame = NodePath("../CanvasLayer/Frame")
+current_tool = NodePath("PencilTool")
+
+[node name="PencilTool" type="Node" parent="PlayerControls"]
+script = ExtResource("3_ovh5a")
+
+[node name="EraserTool" type="Node" parent="PlayerControls"]
+script = ExtResource("4_x4p8e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

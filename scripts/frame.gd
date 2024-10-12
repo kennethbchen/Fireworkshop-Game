@@ -13,7 +13,7 @@ func _ready():
 	
 	# Image starts as compressed I guess
 	img.decompress()
-	
+
 	texture = ImageTexture.create_from_image(img)
 	
 	size = Vector2(width, height)
