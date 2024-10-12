@@ -6,7 +6,6 @@ extends Node
 
 @export var current_tool: Tool
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.use_accumulated_input = false
 
@@ -17,9 +16,9 @@ func _input(event):
 			
 		if event.is_released():
 			current_tool.on_mouse_released(event.position, frame)
-		
+
 		return
-		
+
 	if event is InputEventMouseMotion: 
 		current_tool.on_mouse_motion(event.position, frame)
 

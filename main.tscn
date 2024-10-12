@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=9 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
 [ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
 [ext_resource type="Script" path="res://scripts/frame.gd" id="3_c1rli"]
 [ext_resource type="Script" path="res://scripts/tools/pencil_tool.gd" id="3_ovh5a"]
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
+[ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6s55"]
 
@@ -33,6 +34,24 @@ script = ExtResource("4_x4p8e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 104.0
+offset_bottom = 136.0
+
+[node name="SwatchPicker" type="GridContainer" parent="CanvasLayer/Control"]
+offset_right = 128.0
+offset_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+columns = 2
+script = ExtResource("6_f3tm5")
+colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
+
 [node name="Tools" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 296.0
 offset_top = 8.0
@@ -49,6 +68,7 @@ text = "Erase
 "
 
 [node name="Frame" type="TextureRect" parent="CanvasLayer"]
+visible = false
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 40.0
