@@ -1,6 +1,6 @@
 extends Node
 
-@export var frame: Frame
+@export var drawing_area: DrawingArea
 
 @export var tools: Dictionary
 
@@ -12,15 +12,15 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
-			current_tool.on_mouse_pressed(event.position, frame)
+			current_tool.on_mouse_pressed(event.position, drawing_area)
 			
 		if event.is_released():
-			current_tool.on_mouse_released(event.position, frame)
+			current_tool.on_mouse_released(event.position, drawing_area)
 
 		return
 
 	if event is InputEventMouseMotion: 
-		current_tool.on_mouse_motion(event.position, frame)
+		current_tool.on_mouse_motion(event.position, drawing_area)
 
 func change_tool_from_name(tool_name: String):
 	if tool_name in tools:

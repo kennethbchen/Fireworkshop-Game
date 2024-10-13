@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
 [ext_resource type="Script" path="res://scripts/global_tool_settings.gd" id="1_om5vq"]
 [ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
-[ext_resource type="Script" path="res://scripts/frame.gd" id="3_c1rli"]
+[ext_resource type="Script" path="res://scripts/drawing_area.gd" id="3_c1rli"]
 [ext_resource type="Script" path="res://scripts/tools/pencil_tool.gd" id="3_ovh5a"]
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
@@ -64,9 +64,9 @@ swatch_picker = NodePath("../CanvasLayer/SwatchPicker")
 [node name="DebugCommands" type="Node" parent="."]
 script = ExtResource("1_255dg")
 
-[node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("frame", "current_tool")]
+[node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("drawing_area", "current_tool")]
 script = ExtResource("2_3u3oc")
-frame = NodePath("../CanvasLayer/Frame")
+drawing_area = NodePath("../CanvasLayer/DrawingArea")
 tools = {
 "eraser": NodePath("EraserTool"),
 "pencil": NodePath("PencilTool")
@@ -122,7 +122,7 @@ layout_mode = 2
 text = "Erase
 "
 
-[node name="Frame" type="TextureRect" parent="CanvasLayer"]
+[node name="DrawingArea" type="TextureRect" parent="CanvasLayer"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 40.0
@@ -131,7 +131,7 @@ scale = Vector2(9, 9)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Frame"]
+[node name="Panel" type="Panel" parent="CanvasLayer/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_right = 16.0
@@ -139,7 +139,7 @@ offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/Frame"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_left = 16.0
@@ -148,7 +148,7 @@ offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
-[node name="Panel3" type="Panel" parent="CanvasLayer/Frame"]
+[node name="Panel3" type="Panel" parent="CanvasLayer/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_top = 16.0
@@ -157,7 +157,7 @@ offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
-[node name="Panel4" type="Panel" parent="CanvasLayer/Frame"]
+[node name="Panel4" type="Panel" parent="CanvasLayer/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_left = 16.0

@@ -1,6 +1,6 @@
 extends TextureRect
 
-class_name Frame
+class_name DrawingArea
 
 @export var width: int = 32
 @export var height: int = 32
