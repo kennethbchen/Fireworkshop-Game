@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=15 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="8_75yju"]
+[ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
 bg_color = Color(1, 1, 1, 0)
@@ -162,6 +163,7 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("9_2c0ij")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
