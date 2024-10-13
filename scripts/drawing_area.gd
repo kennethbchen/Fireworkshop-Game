@@ -5,10 +5,9 @@ class_name DrawingArea
 @export var width: int = 32
 @export var height: int = 32
 
-var img: Image
+var image_buffer: Image
 
 func _ready():
-	
 	size = Vector2(%PlayerData.frame_width, %PlayerData.frame_height)
 
 func get_current_frame_texture() -> Texture2D:
@@ -20,11 +19,10 @@ func set_pixel_from_global_position(pos: Vector2, color: Color):
 		return
 	
 	var pix_position: Vector2 = get_pix_from_global_position(pos)
-	img.set_pixel(pix_position.x, pix_position.y, color)
 	
-	# Update both the current frame in PlayerData and this object's image"res://main.tscn::SpriteFrames_dev2h"
-	get_current_frame_texture().update(img)
-	texture.update(img)
+	image_buffer.set_pixel(pix_position.x, pix_position.y, color)
+	
+	texture.update(image_buffer)
 	
 # NOTE: 0 Indexed
 func get_pix_from_global_position(pos: Vector2) -> Vector2:
@@ -58,6 +56,8 @@ func is_pix_in_bounds(pos: Vector2) -> bool:
 
 func _on_current_frame_changed(new_idx: int):
 	
-	img = get_current_frame_texture().get_image()
-		
+	# The texture is a resource, so when it changes,
+	# everywhere else that uses the texture does too
 	texture = get_current_frame_texture()
+	
+	image_buffer = texture.get_image()

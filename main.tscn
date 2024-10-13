@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=14 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
@@ -9,17 +9,6 @@
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="8_75yju"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dev2h"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
 bg_color = Color(1, 1, 1, 0)
@@ -45,7 +34,6 @@ bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_2o573")
-flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_dev2h")])
 
 [node name="TempSprite" type="Sprite2D" parent="PlayerData"]
 position = Vector2(320, 336)
