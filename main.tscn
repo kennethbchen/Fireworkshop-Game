@@ -10,20 +10,11 @@
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="8_75yju"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4ya3g"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dev2h"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": null
+"texture": ExtResource("8_75yju")
 }],
 "loop": true,
 "name": &"default",
@@ -54,7 +45,10 @@ bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_2o573")
-flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_4ya3g")])
+flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_dev2h")])
+
+[node name="TempSprite" type="Sprite2D" parent="PlayerData"]
+position = Vector2(320, 336)
 
 [node name="GlobalToolSettings" type="Node" parent="." node_paths=PackedStringArray("swatch_picker")]
 unique_name_in_owner = true
@@ -238,5 +232,6 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k72q8")
 
+[connection signal="current_frame_changed" from="PlayerData" to="CanvasLayer/DrawingArea" method="_on_current_frame_changed"]
 [connection signal="pressed" from="CanvasLayer/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
 [connection signal="pressed" from="CanvasLayer/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]

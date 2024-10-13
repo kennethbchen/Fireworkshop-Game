@@ -9,14 +9,10 @@ var img: Image
 
 func _ready():
 	
-	img = Image.create(width, height, false, Image.FORMAT_BPTC_RGBA)
-	
-	# Image starts as compressed I guess
-	img.decompress()
+	size = Vector2(%PlayerData.frame_width, %PlayerData.frame_height)
 
-	texture = ImageTexture.create_from_image(img)
-	
-	size = Vector2(width, height)
+func get_current_frame_texture() -> Texture2D:
+	return %PlayerData.get_current_frame()
 
 func set_pixel_from_global_position(pos: Vector2, color: Color):
 	
@@ -25,6 +21,9 @@ func set_pixel_from_global_position(pos: Vector2, color: Color):
 	
 	var pix_position: Vector2 = get_pix_from_global_position(pos)
 	img.set_pixel(pix_position.x, pix_position.y, color)
+	
+	# Update both the current frame in PlayerData and this object's image"res://main.tscn::SpriteFrames_dev2h"
+	get_current_frame_texture().update(img)
 	texture.update(img)
 	
 # NOTE: 0 Indexed
@@ -57,5 +56,8 @@ func is_pix_in_bounds(pos: Vector2) -> bool:
 	
 	return true
 
-func _process(delta):
-	pass
+func _on_current_frame_changed(new_idx: int):
+	
+	img = get_current_frame_texture().get_image()
+		
+	texture = get_current_frame_texture()
