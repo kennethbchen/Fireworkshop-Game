@@ -9,8 +9,8 @@ const frame_width: int = 32
 var current_flipbook_index = 0
 var current_frame_index = 0
 
-signal current_flipbook_changed(flipbook_index: int)
-signal current_frame_changed(frame_index: int)
+signal current_flipbook_changed(new_flipbook: SpriteFrames)
+signal current_frame_changed(new_frame: ImageTexture)
 
 func _ready():
 	
@@ -27,9 +27,8 @@ func get_current_flipbook() -> SpriteFrames:
 
 func get_current_frame() -> ImageTexture:
 	
-	
 	if get_current_flipbook().get_frame_texture("default", current_frame_index) is CompressedTexture2D:
-		# Decompress so that we can edit
+		# Decompress so that it can be edited
 		var new_texture = ImageTexture.create_from_image(get_current_flipbook().get_frame_texture("default", current_frame_index).get_image())
 		
 		get_current_flipbook().set_frame("default", current_frame_index, new_texture)
@@ -39,14 +38,14 @@ func get_current_frame() -> ImageTexture:
 func select_flipbook(flip_idx: int):
 	if flip_idx >= 0 and flip_idx < flipbooks.size() :
 		current_flipbook_index = flip_idx
-		current_flipbook_changed.emit(flip_idx)
+		current_flipbook_changed.emit(get_current_flipbook())
 		
 		select_frame(0)
 
 func select_frame(frame_idx: int):
 	if frame_idx >= 0 and frame_idx < get_current_flipbook().get_frame_count("default"):
 		current_frame_index = frame_idx
-		current_frame_changed.emit(frame_idx)
+		current_frame_changed.emit(get_current_frame())
 
 func append_blank_flipbook():
 	

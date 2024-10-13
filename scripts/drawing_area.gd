@@ -10,9 +10,6 @@ var image_buffer: Image
 func _ready():
 	size = Vector2(%PlayerData.frame_width, %PlayerData.frame_height)
 
-func get_current_frame_texture() -> Texture2D:
-	return %PlayerData.get_current_frame()
-
 func set_pixel_from_global_position(pos: Vector2, color: Color):
 	
 	if not is_global_position_in_bounds(pos):
@@ -39,8 +36,6 @@ func get_pix_from_global_position(pos: Vector2) -> Vector2:
 
 	return relative_position
 		
-
-		
 # NOTE: Probably doesn't work if frame is rotated
 func is_global_position_in_bounds(pos: Vector2) -> bool:
 	return get_rect().has_point(pos)
@@ -54,10 +49,10 @@ func is_pix_in_bounds(pos: Vector2) -> bool:
 	
 	return true
 
-func _on_current_frame_changed(new_idx: int):
+func _on_current_frame_changed(new_frame: ImageTexture):
 	
 	# The texture is a resource, so when it changes,
 	# everywhere else that uses the texture does too
-	texture = get_current_frame_texture()
+	texture = new_frame
 	
 	image_buffer = texture.get_image()

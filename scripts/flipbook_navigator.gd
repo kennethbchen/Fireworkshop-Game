@@ -13,5 +13,4 @@ func _process(delta):
 func _on_current_flipbook_changed():
 	
 	# Display new frames
-	
 	pass
