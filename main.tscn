@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=15 format=3 uid="uid://i7vtjolmol5c"]
 
+[ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
 [ext_resource type="Script" path="res://scripts/global_tool_settings.gd" id="1_om5vq"]
 [ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
@@ -8,6 +9,26 @@
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="8_75yju"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ya3g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
 bg_color = Color(1, 1, 1, 0)
@@ -29,6 +50,11 @@ bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k72q8"]
 
 [node name="Main" type="Node2D"]
+
+[node name="PlayerData" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_2o573")
+flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_4ya3g")])
 
 [node name="GlobalToolSettings" type="Node" parent="." node_paths=PackedStringArray("swatch_picker")]
 unique_name_in_owner = true
