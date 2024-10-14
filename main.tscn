@@ -11,20 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="8_75yju"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_b3neo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
 bg_color = Color(1, 1, 1, 0)
 border_width_left = 4
@@ -44,38 +30,21 @@ bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k72q8"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3neo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_75yju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_75yju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node2D"]
-
-[node name="PlayerData" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("1_2o573")
-flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_b3neo")])
-
-[node name="TempSprite" type="Sprite2D" parent="PlayerData"]
-position = Vector2(320, 336)
-
-[node name="GlobalToolSettings" type="Node" parent="." node_paths=PackedStringArray("swatch_picker")]
-unique_name_in_owner = true
-script = ExtResource("1_om5vq")
-swatch_picker = NodePath("../CanvasLayer/SwatchPicker")
-
-[node name="DebugCommands" type="Node" parent="."]
-script = ExtResource("1_255dg")
-
-[node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("drawing_area", "current_tool")]
-script = ExtResource("2_3u3oc")
-drawing_area = NodePath("../CanvasLayer/DrawingArea")
-tools = {
-"eraser": NodePath("EraserTool"),
-"pencil": NodePath("PencilTool")
-}
-current_tool = NodePath("PencilTool")
-
-[node name="PencilTool" type="Node" parent="PlayerControls"]
-script = ExtResource("3_ovh5a")
-
-[node name="EraserTool" type="Node" parent="PlayerControls"]
-script = ExtResource("4_x4p8e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -165,26 +134,64 @@ offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+[node name="FlipbookNavigator" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
 offset_left = 8.0
-offset_top = 304.0
-offset_right = 224.0
+offset_top = 312.0
+offset_right = 48.0
 offset_bottom = 352.0
+script = ExtResource("9_2c0ij")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/FlipbookNavigator"]
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 48.0
 follow_focus = true
 vertical_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/FlipbookNavigator/ScrollContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/FlipbookNavigator/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("9_2c0ij")
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/FlipbookNavigator/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k72q8")
 
-[connection signal="current_flipbook_changed" from="PlayerData" to="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer" method="_on_current_flipbook_changed"]
-[connection signal="current_frame_changed" from="PlayerData" to="CanvasLayer/DrawingArea" method="_on_current_frame_changed"]
+[node name="PlayerData" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_2o573")
+flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_b3neo")])
+
+[node name="TempSprite" type="Sprite2D" parent="PlayerData"]
+position = Vector2(320, 336)
+
+[node name="GlobalToolSettings" type="Node" parent="." node_paths=PackedStringArray("swatch_picker")]
+unique_name_in_owner = true
+script = ExtResource("1_om5vq")
+swatch_picker = NodePath("../CanvasLayer/SwatchPicker")
+
+[node name="DebugCommands" type="Node" parent="."]
+script = ExtResource("1_255dg")
+
+[node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("drawing_area", "current_tool")]
+script = ExtResource("2_3u3oc")
+drawing_area = NodePath("../CanvasLayer/DrawingArea")
+tools = {
+"eraser": NodePath("EraserTool"),
+"pencil": NodePath("PencilTool")
+}
+current_tool = NodePath("PencilTool")
+
+[node name="PencilTool" type="Node" parent="PlayerControls"]
+script = ExtResource("3_ovh5a")
+
+[node name="EraserTool" type="Node" parent="PlayerControls"]
+script = ExtResource("4_x4p8e")
+
 [connection signal="pressed" from="CanvasLayer/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
 [connection signal="pressed" from="CanvasLayer/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
+[connection signal="current_flipbook_changed" from="PlayerData" to="CanvasLayer/FlipbookNavigator" method="_on_current_flipbook_changed"]
+[connection signal="current_frame_changed" from="PlayerData" to="CanvasLayer/DrawingArea" method="_on_current_frame_changed"]
