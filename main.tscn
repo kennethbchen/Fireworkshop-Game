@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=16 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
@@ -10,6 +10,20 @@
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 [ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="8_75yju"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b3neo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_75yju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_75yju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
 bg_color = Color(1, 1, 1, 0)
@@ -35,6 +49,7 @@ bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_2o573")
+flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_b3neo")])
 
 [node name="TempSprite" type="Sprite2D" parent="PlayerData"]
 position = Vector2(320, 336)
@@ -165,63 +180,11 @@ layout_mode = 2
 layout_mode = 2
 script = ExtResource("9_2c0ij")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
-[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
-[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
-[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
-[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
-[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
-[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
-[node name="TextureRect10" type="TextureRect" parent="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_75yju")
-stretch_mode = 5
-
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k72q8")
 
+[connection signal="current_flipbook_changed" from="PlayerData" to="CanvasLayer/ScrollContainer/VBoxContainer/HBoxContainer" method="_on_current_flipbook_changed"]
 [connection signal="current_frame_changed" from="PlayerData" to="CanvasLayer/DrawingArea" method="_on_current_frame_changed"]
 [connection signal="pressed" from="CanvasLayer/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
 [connection signal="pressed" from="CanvasLayer/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]

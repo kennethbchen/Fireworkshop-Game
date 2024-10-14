@@ -16,6 +16,15 @@ func _ready():
 	
 	if flipbooks.size() <= 0:
 		append_blank_flipbook()
+	else:
+		# Make sure that all flipbooks have ImageTextures that can be edited
+		
+		for flipbook in flipbooks:
+			for i in range(flipbook.get_frame_count("default")):
+				if flipbook.get_frame_texture("default", i) is CompressedTexture2D:
+					var new_texture = ImageTexture.create_from_image(flipbook.get_frame_texture("default", i).get_image())
+					
+					flipbook.set_frame("default", i, new_texture)
 	
 	select_flipbook(0)
 	select_frame(0)
