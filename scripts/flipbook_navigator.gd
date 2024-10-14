@@ -21,12 +21,20 @@ func _on_current_flipbook_changed(new_flipbook: SpriteFrames):
 	
 	if get_child_count() < new_flipbook.get_frame_count("default"):
 		# Add more children
+		
+		var init_children_count: int = get_child_count()
 		for i in range(new_flipbook.get_frame_count("default") - get_child_count()):
-			
-			var child = TextureRect.new()
+			var child: TextureRect = TextureRect.new()
 			add_child(child)
+			
+			child.gui_input.connect(func(event): _on_frame_gui_input(event, init_children_count + i))
+			
 	
 	# Display new frames
 	for i in range(new_flipbook.get_frame_count("default")):
 		get_children()[i].texture = new_flipbook.get_frame_texture("default", i)
+
+func _on_frame_gui_input(event: InputEvent, idx: int):
 	
+	if event is InputEventMouse and event.is_pressed():
+		%PlayerData.select_frame(idx)
