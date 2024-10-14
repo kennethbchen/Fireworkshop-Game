@@ -2,13 +2,9 @@ extends Control
 
 @onready var frame_parent = $ScrollContainer/VBoxContainer/HBoxContainer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	print(frame_parent)
-	pass # Replace with function body.
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
@@ -21,8 +17,8 @@ func _on_current_flipbook_changed(new_flipbook: SpriteFrames):
 			child.queue_free()
 	
 	if frame_parent.get_child_count() < new_flipbook.get_frame_count("default"):
-		# Add more children
 		
+		# Add more children
 		var init_children_count: int = frame_parent.get_child_count()
 		for i in range(new_flipbook.get_frame_count("default") - frame_parent.get_child_count()):
 			var child: TextureRect = TextureRect.new()

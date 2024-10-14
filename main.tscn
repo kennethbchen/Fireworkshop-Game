@@ -46,6 +46,9 @@ animations = [{
 
 [node name="Main" type="Node2D"]
 
+[node name="DebugCommands" type="Node" parent="."]
+script = ExtResource("1_255dg")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SwatchPicker" type="Control" parent="CanvasLayer"]
@@ -172,9 +175,6 @@ position = Vector2(320, 336)
 unique_name_in_owner = true
 script = ExtResource("1_om5vq")
 swatch_picker = NodePath("../CanvasLayer/SwatchPicker")
-
-[node name="DebugCommands" type="Node" parent="."]
-script = ExtResource("1_255dg")
 
 [node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("drawing_area", "current_tool")]
 script = ExtResource("2_3u3oc")
