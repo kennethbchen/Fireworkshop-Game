@@ -2,11 +2,12 @@ extends Control
 
 @onready var frame_parent = $ScrollContainer/VBoxContainer/HBoxContainer
 
-func _ready():
-	pass
+@onready var cursor = $SelectionCursor
+
+var selected_idx: int = 0
 
 func _process(delta):
-	pass
+	cursor.global_position = frame_parent.get_children()[%PlayerData.current_frame_index].global_position
 	
 func _on_current_flipbook_changed(new_flipbook: SpriteFrames):
 	# Make sure that number of texture_rect children match the new flipbook's frame count
