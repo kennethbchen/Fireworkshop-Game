@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=14 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/tools/pencil_tool.gd" id="3_ovh5a"]
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
-[ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="8_75yju"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6s55"]
@@ -29,35 +28,6 @@ expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k72q8"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_b3neo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_75yju")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Main" type="Node2D"]
 
@@ -157,8 +127,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
 offset_top = 312.0
-offset_right = 48.0
-offset_bottom = 352.0
+offset_right = 240.0
+offset_bottom = 368.0
 script = ExtResource("9_2c0ij")
 
 [node name="SelectionCursor" type="Panel" parent="CreateUI/FlipbookNavigator"]
@@ -170,9 +140,12 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CreateUI/FlipbookNavigator"]
-layout_mode = 0
-offset_right = 216.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 follow_focus = true
 vertical_scroll_mode = 0
 
@@ -199,18 +172,17 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
+[node name="AddFrameButton" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 text = "Add New Frame"
 
-[node name="Button2" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
+[node name="DeleteSelectedFrameButton" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 text = "Delete Selected Frame"
 
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_2o573")
-flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_b3neo")])
 
 [node name="GlobalToolSettings" type="Node" parent="." node_paths=PackedStringArray("swatch_picker")]
 unique_name_in_owner = true
@@ -234,5 +206,7 @@ script = ExtResource("4_x4p8e")
 
 [connection signal="pressed" from="CreateUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
 [connection signal="pressed" from="CreateUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
+[connection signal="pressed" from="CreateUI/FlipbookFrameControls/VBoxContainer/AddFrameButton" to="PlayerData" method="append_new_frame"]
+[connection signal="pressed" from="CreateUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
 [connection signal="current_flipbook_changed" from="PlayerData" to="CreateUI/FlipbookNavigator" method="_on_current_flipbook_changed"]
 [connection signal="current_frame_changed" from="PlayerData" to="CreateUI/DrawingArea" method="_on_current_frame_changed"]

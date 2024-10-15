@@ -61,6 +61,28 @@ func append_blank_flipbook():
 	new_flipbook.add_frame("default", create_new_frame())
 	flipbooks.append(new_flipbook)
 
+func delete_frame(frame_index: int = current_frame_index):
+
+	# Leave at least one frame in flipbook
+	if get_current_flipbook().get_frame_count("default") <= 1 or \
+		current_frame_index < 0 or \
+		current_frame_index > get_current_flipbook().get_frame_count("default"):
+		return
+	
+	get_current_flipbook().remove_frame("default", frame_index)
+	
+	select_frame(max(0, current_frame_index - 1))
+	
+	current_flipbook_changed.emit(get_current_flipbook())
+	
+
+func append_new_frame():
+	get_current_flipbook().add_frame("default", create_new_frame())
+	
+	current_flipbook_changed.emit(get_current_flipbook())
+	
+	select_frame(get_current_flipbook().get_frame_count("default") - 1)
+	
 func create_new_frame(flipbook_index: int = current_flipbook_index) -> ImageTexture:
 	
 	var img = Image.create(frame_width, frame_height, false, Image.FORMAT_BPTC_RGBA)

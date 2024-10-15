@@ -6,7 +6,7 @@ extends Control
 
 func _process(delta):
 	cursor.global_position = frame_parent.get_children()[%PlayerData.current_frame_index].global_position
-	
+
 func _on_current_flipbook_changed(new_flipbook: SpriteFrames):
 	
 	# Make sure that number of texture_rect children match the new flipbook's frame count
