@@ -28,8 +28,7 @@ func _ready():
 	
 	select_flipbook(0)
 	select_frame(0)
-		
-	$'TempSprite'.texture = get_current_frame()
+
 
 func get_current_flipbook() -> SpriteFrames:
 	return flipbooks[current_flipbook_index]

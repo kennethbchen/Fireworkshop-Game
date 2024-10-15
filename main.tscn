@@ -64,9 +64,9 @@ animations = [{
 [node name="DebugCommands" type="Node" parent="."]
 script = ExtResource("1_255dg")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CreateUI" type="CanvasLayer" parent="."]
 
-[node name="DrawingArea" type="TextureRect" parent="CanvasLayer"]
+[node name="DrawingArea" type="TextureRect" parent="CreateUI"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 40.0
@@ -75,7 +75,7 @@ scale = Vector2(9, 9)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
 
-[node name="Panel" type="Panel" parent="CanvasLayer/DrawingArea"]
+[node name="Panel" type="Panel" parent="CreateUI/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_right = 16.0
@@ -83,7 +83,7 @@ offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
-[node name="Panel2" type="Panel" parent="CanvasLayer/DrawingArea"]
+[node name="Panel2" type="Panel" parent="CreateUI/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_left = 16.0
@@ -92,7 +92,7 @@ offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
-[node name="Panel3" type="Panel" parent="CanvasLayer/DrawingArea"]
+[node name="Panel3" type="Panel" parent="CreateUI/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_top = 16.0
@@ -101,7 +101,7 @@ offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
-[node name="Panel4" type="Panel" parent="CanvasLayer/DrawingArea"]
+[node name="Panel4" type="Panel" parent="CreateUI/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_left = 16.0
@@ -111,22 +111,22 @@ offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
-[node name="Tools" type="VBoxContainer" parent="CanvasLayer"]
+[node name="Tools" type="VBoxContainer" parent="CreateUI"]
 offset_left = 296.0
 offset_top = 8.0
 offset_right = 351.0
 offset_bottom = 74.0
 
-[node name="PencilButton" type="Button" parent="CanvasLayer/Tools"]
+[node name="PencilButton" type="Button" parent="CreateUI/Tools"]
 layout_mode = 2
 text = "Pencil"
 
-[node name="EraserButton" type="Button" parent="CanvasLayer/Tools"]
+[node name="EraserButton" type="Button" parent="CreateUI/Tools"]
 layout_mode = 2
 text = "Erase
 "
 
-[node name="SwatchPicker" type="Control" parent="CanvasLayer"]
+[node name="SwatchPicker" type="Control" parent="CreateUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 304.0
@@ -136,7 +136,7 @@ offset_bottom = 88.0
 script = ExtResource("6_f3tm5")
 colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
 
-[node name="SwatchContainer" type="GridContainer" parent="CanvasLayer/SwatchPicker"]
+[node name="SwatchContainer" type="GridContainer" parent="CreateUI/SwatchPicker"]
 layout_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -144,7 +144,7 @@ size_flags_stretch_ratio = 0.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
-[node name="SelectionCursor" type="Panel" parent="CanvasLayer/SwatchPicker"]
+[node name="SelectionCursor" type="Panel" parent="CreateUI/SwatchPicker"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -152,7 +152,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
 
-[node name="FlipbookNavigator" type="Control" parent="CanvasLayer"]
+[node name="FlipbookNavigator" type="Control" parent="CreateUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -161,46 +161,65 @@ offset_right = 48.0
 offset_bottom = 352.0
 script = ExtResource("9_2c0ij")
 
-[node name="SelectionCursor" type="Panel" parent="CanvasLayer/FlipbookNavigator"]
+[node name="SelectionCursor" type="Panel" parent="CreateUI/FlipbookNavigator"]
+layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/FlipbookNavigator"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CreateUI/FlipbookNavigator"]
 layout_mode = 0
 offset_right = 216.0
 offset_bottom = 48.0
 follow_focus = true
 vertical_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/FlipbookNavigator/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateUI/FlipbookNavigator/ScrollContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/FlipbookNavigator/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateUI/FlipbookNavigator/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/FlipbookNavigator/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CreateUI/FlipbookNavigator/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k72q8")
+
+[node name="FlipbookFrameControls" type="Control" parent="CreateUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 248.0
+offset_top = 320.0
+offset_right = 432.0
+offset_bottom = 384.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateUI/FlipbookFrameControls"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
+layout_mode = 2
+text = "Add New Frame"
+
+[node name="Button2" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
+layout_mode = 2
+text = "Delete Selected Frame"
 
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_2o573")
 flipbooks = Array[SpriteFrames]([SubResource("SpriteFrames_b3neo")])
 
-[node name="TempSprite" type="Sprite2D" parent="PlayerData"]
-position = Vector2(320, 336)
-
 [node name="GlobalToolSettings" type="Node" parent="." node_paths=PackedStringArray("swatch_picker")]
 unique_name_in_owner = true
 script = ExtResource("1_om5vq")
-swatch_picker = NodePath("../CanvasLayer/SwatchPicker")
+swatch_picker = NodePath("../CreateUI/SwatchPicker")
 
 [node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("drawing_area", "current_tool")]
 script = ExtResource("2_3u3oc")
-drawing_area = NodePath("../CanvasLayer/DrawingArea")
+drawing_area = NodePath("../CreateUI/DrawingArea")
 tools = {
 "eraser": NodePath("EraserTool"),
 "pencil": NodePath("PencilTool")
@@ -213,7 +232,7 @@ script = ExtResource("3_ovh5a")
 [node name="EraserTool" type="Node" parent="PlayerControls"]
 script = ExtResource("4_x4p8e")
 
-[connection signal="pressed" from="CanvasLayer/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
-[connection signal="pressed" from="CanvasLayer/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
-[connection signal="current_flipbook_changed" from="PlayerData" to="CanvasLayer/FlipbookNavigator" method="_on_current_flipbook_changed"]
-[connection signal="current_frame_changed" from="PlayerData" to="CanvasLayer/DrawingArea" method="_on_current_frame_changed"]
+[connection signal="pressed" from="CreateUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
+[connection signal="pressed" from="CreateUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
+[connection signal="current_flipbook_changed" from="PlayerData" to="CreateUI/FlipbookNavigator" method="_on_current_flipbook_changed"]
+[connection signal="current_frame_changed" from="PlayerData" to="CreateUI/DrawingArea" method="_on_current_frame_changed"]
