@@ -38,9 +38,9 @@ script = ExtResource("1_255dg")
 
 [node name="DrawingArea" type="TextureRect" parent="CreateUI"]
 offset_left = 8.0
-offset_top = 8.0
+offset_top = 40.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 72.0
 scale = Vector2(9, 9)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
@@ -82,10 +82,10 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
 [node name="Tools" type="VBoxContainer" parent="CreateUI"]
-offset_left = 296.0
-offset_top = 8.0
-offset_right = 351.0
-offset_bottom = 74.0
+offset_left = 312.0
+offset_top = 40.0
+offset_right = 367.0
+offset_bottom = 106.0
 
 [node name="PencilButton" type="Button" parent="CreateUI/Tools"]
 layout_mode = 2
@@ -99,10 +99,10 @@ text = "Erase
 [node name="SwatchPicker" type="Control" parent="CreateUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 304.0
-offset_top = 88.0
-offset_right = 304.0
-offset_bottom = 88.0
+offset_left = 320.0
+offset_top = 120.0
+offset_right = 320.0
+offset_bottom = 120.0
 script = ExtResource("6_f3tm5")
 colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
 
@@ -126,9 +126,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
-offset_top = 312.0
+offset_top = 336.0
 offset_right = 240.0
-offset_bottom = 368.0
+offset_bottom = 392.0
 script = ExtResource("9_2c0ij")
 
 [node name="SelectionCursor" type="Panel" parent="CreateUI/FlipbookNavigator"]
@@ -163,9 +163,9 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_k72q8")
 layout_mode = 3
 anchors_preset = 0
 offset_left = 248.0
-offset_top = 320.0
+offset_top = 328.0
 offset_right = 432.0
-offset_bottom = 384.0
+offset_bottom = 392.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CreateUI/FlipbookFrameControls"]
 layout_mode = 0
@@ -179,6 +179,13 @@ text = "Add New Frame"
 [node name="DeleteSelectedFrameButton" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 text = "Delete Selected Frame"
+
+[node name="Button" type="Button" parent="CreateUI"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 109.0
+offset_bottom = 39.0
+text = "^ Play Mode"
 
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
