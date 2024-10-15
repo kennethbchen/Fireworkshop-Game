@@ -31,12 +31,15 @@ expand_margin_bottom = 4.0
 
 [node name="Main" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(225, 202.5)
+
 [node name="DebugCommands" type="Node" parent="."]
 script = ExtResource("1_255dg")
 
-[node name="CreateUI" type="CanvasLayer" parent="."]
+[node name="CreateModeUI" type="Node" parent="."]
 
-[node name="DrawingArea" type="TextureRect" parent="CreateUI"]
+[node name="DrawingArea" type="TextureRect" parent="CreateModeUI"]
 offset_left = 8.0
 offset_top = 40.0
 offset_right = 40.0
@@ -45,7 +48,7 @@ scale = Vector2(9, 9)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
 
-[node name="Panel" type="Panel" parent="CreateUI/DrawingArea"]
+[node name="Panel" type="Panel" parent="CreateModeUI/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_right = 16.0
@@ -53,7 +56,7 @@ offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
-[node name="Panel2" type="Panel" parent="CreateUI/DrawingArea"]
+[node name="Panel2" type="Panel" parent="CreateModeUI/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_left = 16.0
@@ -62,7 +65,7 @@ offset_bottom = 16.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
-[node name="Panel3" type="Panel" parent="CreateUI/DrawingArea"]
+[node name="Panel3" type="Panel" parent="CreateModeUI/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_top = 16.0
@@ -71,7 +74,7 @@ offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
 
-[node name="Panel4" type="Panel" parent="CreateUI/DrawingArea"]
+[node name="Panel4" type="Panel" parent="CreateModeUI/DrawingArea"]
 z_index = -1
 layout_mode = 0
 offset_left = 16.0
@@ -81,22 +84,22 @@ offset_bottom = 32.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
 
-[node name="Tools" type="VBoxContainer" parent="CreateUI"]
+[node name="Tools" type="VBoxContainer" parent="CreateModeUI"]
 offset_left = 312.0
 offset_top = 40.0
 offset_right = 367.0
 offset_bottom = 106.0
 
-[node name="PencilButton" type="Button" parent="CreateUI/Tools"]
+[node name="PencilButton" type="Button" parent="CreateModeUI/Tools"]
 layout_mode = 2
 text = "Pencil"
 
-[node name="EraserButton" type="Button" parent="CreateUI/Tools"]
+[node name="EraserButton" type="Button" parent="CreateModeUI/Tools"]
 layout_mode = 2
 text = "Erase
 "
 
-[node name="SwatchPicker" type="Control" parent="CreateUI"]
+[node name="SwatchPicker" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 320.0
@@ -106,7 +109,7 @@ offset_bottom = 120.0
 script = ExtResource("6_f3tm5")
 colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
 
-[node name="SwatchContainer" type="GridContainer" parent="CreateUI/SwatchPicker"]
+[node name="SwatchContainer" type="GridContainer" parent="CreateModeUI/SwatchPicker"]
 layout_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -114,7 +117,7 @@ size_flags_stretch_ratio = 0.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
-[node name="SelectionCursor" type="Panel" parent="CreateUI/SwatchPicker"]
+[node name="SelectionCursor" type="Panel" parent="CreateModeUI/SwatchPicker"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -122,7 +125,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
 
-[node name="FlipbookNavigator" type="Control" parent="CreateUI"]
+[node name="FlipbookNavigator" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 8.0
@@ -131,7 +134,7 @@ offset_right = 240.0
 offset_bottom = 392.0
 script = ExtResource("9_2c0ij")
 
-[node name="SelectionCursor" type="Panel" parent="CreateUI/FlipbookNavigator"]
+[node name="SelectionCursor" type="Panel" parent="CreateModeUI/FlipbookNavigator"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
@@ -139,7 +142,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CreateUI/FlipbookNavigator"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CreateModeUI/FlipbookNavigator"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,17 +152,17 @@ grow_vertical = 2
 follow_focus = true
 vertical_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CreateUI/FlipbookNavigator/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateModeUI/FlipbookNavigator/ScrollContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CreateUI/FlipbookNavigator/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CreateModeUI/FlipbookNavigator/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="CreateUI/FlipbookNavigator/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CreateModeUI/FlipbookNavigator/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k72q8")
 
-[node name="FlipbookFrameControls" type="Control" parent="CreateUI"]
+[node name="FlipbookFrameControls" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 248.0
@@ -167,20 +170,20 @@ offset_top = 328.0
 offset_right = 432.0
 offset_bottom = 392.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CreateUI/FlipbookFrameControls"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreateModeUI/FlipbookFrameControls"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="AddFrameButton" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
+[node name="AddFrameButton" type="Button" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 text = "Add New Frame"
 
-[node name="DeleteSelectedFrameButton" type="Button" parent="CreateUI/FlipbookFrameControls/VBoxContainer"]
+[node name="DeleteSelectedFrameButton" type="Button" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 text = "Delete Selected Frame"
 
-[node name="Button" type="Button" parent="CreateUI"]
+[node name="Button" type="Button" parent="CreateModeUI"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 109.0
@@ -194,11 +197,11 @@ script = ExtResource("1_2o573")
 [node name="GlobalToolSettings" type="Node" parent="." node_paths=PackedStringArray("swatch_picker")]
 unique_name_in_owner = true
 script = ExtResource("1_om5vq")
-swatch_picker = NodePath("../CreateUI/SwatchPicker")
+swatch_picker = NodePath("../CreateModeUI/SwatchPicker")
 
 [node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("drawing_area", "current_tool")]
 script = ExtResource("2_3u3oc")
-drawing_area = NodePath("../CreateUI/DrawingArea")
+drawing_area = NodePath("../CreateModeUI/DrawingArea")
 tools = {
 "eraser": NodePath("EraserTool"),
 "pencil": NodePath("PencilTool")
@@ -211,9 +214,9 @@ script = ExtResource("3_ovh5a")
 [node name="EraserTool" type="Node" parent="PlayerControls"]
 script = ExtResource("4_x4p8e")
 
-[connection signal="pressed" from="CreateUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
-[connection signal="pressed" from="CreateUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
-[connection signal="pressed" from="CreateUI/FlipbookFrameControls/VBoxContainer/AddFrameButton" to="PlayerData" method="append_new_frame"]
-[connection signal="pressed" from="CreateUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
-[connection signal="current_flipbook_changed" from="PlayerData" to="CreateUI/FlipbookNavigator" method="_on_current_flipbook_changed"]
-[connection signal="current_frame_changed" from="PlayerData" to="CreateUI/DrawingArea" method="_on_current_frame_changed"]
+[connection signal="pressed" from="CreateModeUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
+[connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
+[connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/AddFrameButton" to="PlayerData" method="append_new_frame"]
+[connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
+[connection signal="current_flipbook_changed" from="PlayerData" to="CreateModeUI/FlipbookNavigator" method="_on_current_flipbook_changed"]
+[connection signal="current_frame_changed" from="PlayerData" to="CreateModeUI/DrawingArea" method="_on_current_frame_changed"]
