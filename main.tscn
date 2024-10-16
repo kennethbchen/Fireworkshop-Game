@@ -216,7 +216,7 @@ unique_name_in_owner = true
 script = ExtResource("1_om5vq")
 swatch_picker = NodePath("../CreateModeUI/SwatchPicker")
 
-[node name="PlayerControls" type="Node" parent="." node_paths=PackedStringArray("drawing_area", "current_tool")]
+[node name="PlayerControls" type="Node2D" parent="." node_paths=PackedStringArray("drawing_area", "current_tool")]
 script = ExtResource("2_3u3oc")
 drawing_area = NodePath("../CreateModeUI/DrawingArea")
 tools = {
@@ -231,8 +231,8 @@ script = ExtResource("3_ovh5a")
 [node name="EraserTool" type="Node" parent="PlayerControls"]
 script = ExtResource("4_x4p8e")
 
-[connection signal="pressed" from="CreateModeUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
-[connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
+[connection signal="pressed" from="CreateModeUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name"]
+[connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name"]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/AddFrameButton" to="PlayerData" method="append_new_frame"]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
 [connection signal="pressed" from="CreateModeUI/PlayModeButton" to="Camera2D" method="goto_play_mode"]

@@ -3,7 +3,7 @@ extends Camera2D
 var transitioning = false
 
 func _ready():
-	position = _get_draw_mode_position()
+	position = _get_play_mode_position()
 
 func goto_draw_mode():
 	
