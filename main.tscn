@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=15 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
 [ext_resource type="Script" path="res://scripts/global_tool_settings.gd" id="1_om5vq"]
 [ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
@@ -33,6 +34,7 @@ expand_margin_bottom = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(225, 202.5)
+script = ExtResource("1_5hvaw")
 
 [node name="DebugCommands" type="Node" parent="."]
 script = ExtResource("1_255dg")
@@ -183,12 +185,21 @@ text = "Add New Frame"
 layout_mode = 2
 text = "Delete Selected Frame"
 
-[node name="Button" type="Button" parent="CreateModeUI"]
+[node name="PlayModeButton" type="Button" parent="CreateModeUI"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 109.0
 offset_bottom = 39.0
 text = "^ Play Mode"
+
+[node name="PlayModeUI" type="Node" parent="."]
+
+[node name="DrawModeButton" type="Button" parent="PlayModeUI"]
+offset_left = 8.0
+offset_top = -40.0
+offset_right = 128.0
+offset_bottom = -9.0
+text = "v Draw Mode"
 
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
@@ -218,5 +229,7 @@ script = ExtResource("4_x4p8e")
 [connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/AddFrameButton" to="PlayerData" method="append_new_frame"]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
+[connection signal="pressed" from="CreateModeUI/PlayModeButton" to="Camera2D" method="goto_play_mode"]
+[connection signal="pressed" from="PlayModeUI/DrawModeButton" to="Camera2D" method="goto_draw_mode"]
 [connection signal="current_flipbook_changed" from="PlayerData" to="CreateModeUI/FlipbookNavigator" method="_on_current_flipbook_changed"]
 [connection signal="current_frame_changed" from="PlayerData" to="CreateModeUI/DrawingArea" method="_on_current_frame_changed"]
