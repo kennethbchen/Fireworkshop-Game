@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=17 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" path="res://scripts/drawing_area.gd" id="3_c1rli"]
 [ext_resource type="Script" path="res://scripts/tools/pencil_tool.gd" id="3_ovh5a"]
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
+[ext_resource type="Script" path="res://scripts/firework_controller.gd" id="6_11r1j"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
+[ext_resource type="SpriteFrames" uid="uid://c6amhny3q5yl7" path="res://sample_firework/sample_firework.tres" id="12_wq1f7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6s55"]
 
@@ -207,6 +209,10 @@ offset_right = 128.0
 offset_bottom = -9.0
 text = "v Draw Mode"
 
+[node name="FireworkController" type="Node2D" parent="PlayModeUI"]
+position = Vector2(224, -160)
+script = ExtResource("6_11r1j")
+
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_2o573")
@@ -230,6 +236,13 @@ script = ExtResource("3_ovh5a")
 
 [node name="EraserTool" type="Node" parent="PlayerControls"]
 script = ExtResource("4_x4p8e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(152, -200)
+sprite_frames = ExtResource("12_wq1f7")
+autoplay = "default"
+frame = 8
+frame_progress = 0.477751
 
 [connection signal="pressed" from="CreateModeUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name"]
 [connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name"]
