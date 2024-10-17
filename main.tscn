@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=17 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
+[ext_resource type="Texture2D" uid="uid://ct8wdx0sna33v" path="res://icon.svg" id="1_mjnsk"]
 [ext_resource type="Script" path="res://scripts/global_tool_settings.gd" id="1_om5vq"]
 [ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
 [ext_resource type="Script" path="res://scripts/drawing_area.gd" id="3_c1rli"]
@@ -29,6 +30,26 @@ expand_margin_bottom = 4.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k72q8"]
 
 [node name="Main" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 56.0
+offset_top = -384.0
+offset_right = 120.0
+offset_bottom = -320.0
+scale = Vector2(5, 5)
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+size = Vector2i(64, 64)
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+texture = ExtResource("1_mjnsk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
+sprite_frames = ExtResource("12_wq1f7")
+autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
 
 [node name="PlayModeViewportGuide" type="Marker2D" parent="."]
 position = Vector2(0, -405)
@@ -203,13 +224,6 @@ script = ExtResource("3_ovh5a")
 
 [node name="EraserTool" type="Node" parent="PlayerControls"]
 script = ExtResource("4_x4p8e")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(152, -200)
-sprite_frames = ExtResource("12_wq1f7")
-autoplay = "default"
-frame = 8
-frame_progress = 0.477751
 
 [connection signal="pressed" from="CreateModeUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name"]
 [connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name"]
