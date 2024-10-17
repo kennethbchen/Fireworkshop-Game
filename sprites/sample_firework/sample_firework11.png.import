@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://i8r5vo0iuhh7"
-path="res://.godot/imported/sample_firework11.png-be0f6bd9f33ea8fa7a10e7d82e74b450.ctex"
+path="res://.godot/imported/sample_firework11.png-125684e718726a6e439d09d280c61451.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sample_firework/sample_firework11.png"
-dest_files=["res://.godot/imported/sample_firework11.png-be0f6bd9f33ea8fa7a10e7d82e74b450.ctex"]
+source_file="res://sprites/sample_firework/sample_firework11.png"
+dest_files=["res://.godot/imported/sample_firework11.png-125684e718726a6e439d09d280c61451.ctex"]
 
 [params]
 

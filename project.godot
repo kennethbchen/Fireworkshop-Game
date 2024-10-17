@@ -24,6 +24,15 @@ window/size/window_height_override=810
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[file_customization]
+
+folder_colors={
+"res://animations/": "red",
+"res://ignore/": "gray",
+"res://scripts/": "blue",
+"res://sprites/": "yellow"
+}
+
 [input]
 
 debug_quit_game={

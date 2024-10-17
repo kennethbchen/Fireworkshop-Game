@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lhyrcaxrbxuj"
-path="res://.godot/imported/sample_firework1.png-7a6dff0700e600b8f3d5492f065032a0.ctex"
+uid="uid://c57vqcddupko4"
+path="res://.godot/imported/sample_firework6.png-bc072467b57e656b78312bce5ee36f10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sample_firework/sample_firework1.png"
-dest_files=["res://.godot/imported/sample_firework1.png-7a6dff0700e600b8f3d5492f065032a0.ctex"]
+source_file="res://sprites/sample_firework/sample_firework6.png"
+dest_files=["res://.godot/imported/sample_firework6.png-bc072467b57e656b78312bce5ee36f10.ctex"]
 
 [params]
 

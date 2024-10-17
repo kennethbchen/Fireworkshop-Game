@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://scripts/firework_controller.gd" id="6_11r1j"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
-[ext_resource type="SpriteFrames" uid="uid://c6amhny3q5yl7" path="res://sample_firework/sample_firework.tres" id="12_wq1f7"]
+[ext_resource type="SpriteFrames" uid="uid://c6amhny3q5yl7" path="res://animations/sample_firework.tres" id="12_wq1f7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
 bg_color = Color(1, 1, 1, 0)
@@ -30,27 +30,6 @@ expand_margin_bottom = 4.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k72q8"]
 
 [node name="Main" type="Node2D"]
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_top = -400.0
-offset_right = 90.0
-offset_bottom = -333.0
-scale = Vector2(5, 5)
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-disable_3d = true
-handle_input_locally = false
-size = Vector2i(64, 64)
-render_target_update_mode = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
-texture = ExtResource("1_mjnsk")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
-sprite_frames = ExtResource("12_wq1f7")
-autoplay = "default"
-
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
 
 [node name="PlayModeViewportGuide" type="Marker2D" parent="."]
 position = Vector2(0, -405)
@@ -220,6 +199,27 @@ offset_bottom = 39.0
 text = "^ Play Mode"
 
 [node name="PlayModeUI" type="Node" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PlayModeUI"]
+offset_top = -400.0
+offset_right = 90.0
+offset_bottom = -333.0
+scale = Vector2(5, 5)
+
+[node name="SubViewport" type="SubViewport" parent="PlayModeUI/SubViewportContainer"]
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(64, 64)
+render_target_update_mode = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
+texture = ExtResource("1_mjnsk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
+sprite_frames = ExtResource("12_wq1f7")
+autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
 
 [node name="DrawModeButton" type="Button" parent="PlayModeUI"]
 offset_left = 8.0
