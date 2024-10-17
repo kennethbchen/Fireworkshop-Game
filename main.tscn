@@ -48,9 +48,9 @@ script = ExtResource("1_255dg")
 [node name="DrawingArea" type="TextureRect" parent="CreateModeUI"]
 offset_left = 8.0
 offset_top = 40.0
-offset_right = 72.0
-offset_bottom = 104.0
-scale = Vector2(4, 4)
+offset_right = 40.0
+offset_bottom = 72.0
+scale = Vector2(8, 8)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
 
