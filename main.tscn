@@ -32,10 +32,9 @@ expand_margin_bottom = 4.0
 [node name="Main" type="Node2D"]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-offset_left = 56.0
-offset_top = -384.0
-offset_right = 120.0
-offset_bottom = -320.0
+offset_top = -400.0
+offset_right = 90.0
+offset_bottom = -333.0
 scale = Vector2(5, 5)
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
@@ -257,8 +256,8 @@ script = ExtResource("3_ovh5a")
 [node name="EraserTool" type="Node" parent="PlayerControls"]
 script = ExtResource("4_x4p8e")
 
-[connection signal="pressed" from="CreateModeUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name"]
-[connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name"]
+[connection signal="pressed" from="CreateModeUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
+[connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/AddFrameButton" to="PlayerData" method="append_new_frame"]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
 [connection signal="pressed" from="CreateModeUI/PlayModeButton" to="Camera2D" method="goto_play_mode"]
