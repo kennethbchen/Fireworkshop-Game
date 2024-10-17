@@ -2,14 +2,14 @@ extends TextureRect
 
 class_name DrawingArea
 
-@export var width: int = 32
-@export var height: int = 32
-
 var image_buffer: Image
 
 func _ready():
 	size = Vector2(%PlayerData.frame_width, %PlayerData.frame_height)
 
+func _process(delta):
+	queue_redraw()
+	
 func set_pixel_from_global_position(pos: Vector2, color: Color):
 	
 	if not is_global_position_in_bounds(pos):
@@ -43,7 +43,7 @@ func is_global_position_in_bounds(pos: Vector2) -> bool:
 func is_pix_in_bounds(pos: Vector2) -> bool:
 	
 	if pos.x < 0 or pos.y < 0 or \
-	   pos.x >= width or pos.y >= height:
+	   pos.x >= size.x or pos.y >= size.y:
 		
 		return false
 	
@@ -56,3 +56,7 @@ func _on_current_frame_changed(new_frame: ImageTexture):
 	texture = new_frame
 	
 	image_buffer = texture.get_image()
+
+
+
+

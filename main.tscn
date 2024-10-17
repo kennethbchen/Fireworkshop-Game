@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=16 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -7,16 +7,12 @@
 [ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
 [ext_resource type="Script" path="res://scripts/drawing_area.gd" id="3_c1rli"]
 [ext_resource type="Script" path="res://scripts/tools/pencil_tool.gd" id="3_ovh5a"]
+[ext_resource type="Script" path="res://scripts/grid_drawer.gd" id="4_swyph"]
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 [ext_resource type="Script" path="res://scripts/firework_controller.gd" id="6_11r1j"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
 [ext_resource type="SpriteFrames" uid="uid://c6amhny3q5yl7" path="res://sample_firework/sample_firework.tres" id="12_wq1f7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6s55"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvl0s"]
-bg_color = Color(0.370364, 0.370365, 0.370364, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
 bg_color = Color(1, 1, 1, 0)
@@ -52,47 +48,18 @@ script = ExtResource("1_255dg")
 [node name="DrawingArea" type="TextureRect" parent="CreateModeUI"]
 offset_left = 8.0
 offset_top = 40.0
-offset_right = 40.0
-offset_bottom = 72.0
-scale = Vector2(9, 9)
+offset_right = 72.0
+offset_bottom = 104.0
+scale = Vector2(4, 4)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
 
-[node name="Panel" type="Panel" parent="CreateModeUI/DrawingArea"]
+[node name="GridDrawer" type="Control" parent="CreateModeUI/DrawingArea"]
 z_index = -1
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
-
-[node name="Panel2" type="Panel" parent="CreateModeUI/DrawingArea"]
-z_index = -1
-layout_mode = 0
-offset_left = 16.0
-offset_right = 32.0
-offset_bottom = 16.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
-
-[node name="Panel3" type="Panel" parent="CreateModeUI/DrawingArea"]
-z_index = -1
-layout_mode = 0
-offset_top = 16.0
-offset_right = 16.0
-offset_bottom = 32.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xvl0s")
-
-[node name="Panel4" type="Panel" parent="CreateModeUI/DrawingArea"]
-z_index = -1
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 32.0
-offset_bottom = 32.0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_h6s55")
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+script = ExtResource("4_swyph")
 
 [node name="Tools" type="VBoxContainer" parent="CreateModeUI"]
 offset_left = 312.0

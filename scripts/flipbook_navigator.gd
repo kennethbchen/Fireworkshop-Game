@@ -4,6 +4,8 @@ extends Control
 
 @onready var cursor = $SelectionCursor
 
+func _ready():
+	cursor.size = Vector2(%PlayerData.frame_width, %PlayerData.frame_height)
 func _process(delta):
 	cursor.global_position = frame_parent.get_children()[%PlayerData.current_frame_index].global_position
 

@@ -3,8 +3,8 @@ extends Node
 
 @export var flipbooks: Array[SpriteFrames] = []
 
-const frame_height: int = 32
-const frame_width: int = 32
+const frame_height: int = 64
+const frame_width: int = 64
 
 var current_flipbook_index = 0
 var current_frame_index = 0
