@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var rocket_animations: Array[SpriteFrames]
+
+@export var explosion_animations: Array[SpriteFrames]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
