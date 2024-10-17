@@ -203,21 +203,26 @@ text = "^ Play Mode"
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PlayModeUI"]
 offset_top = -400.0
 offset_right = 90.0
-offset_bottom = -333.0
+offset_bottom = -330.0
 scale = Vector2(5, 5)
 
 [node name="SubViewport" type="SubViewport" parent="PlayModeUI/SubViewportContainer"]
 disable_3d = true
 handle_input_locally = false
-size = Vector2i(64, 64)
+size = Vector2i(90, 70)
 render_target_update_mode = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
+position = Vector2(224, -248)
+scale = Vector2(1, 1)
 texture = ExtResource("1_mjnsk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
 sprite_frames = ExtResource("12_wq1f7")
 autoplay = "default"
+
+[node name="FireworkController" type="Node2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
+script = ExtResource("6_11r1j")
 
 [node name="Camera2D" type="Camera2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
 
@@ -227,10 +232,6 @@ offset_top = -40.0
 offset_right = 128.0
 offset_bottom = -9.0
 text = "v Draw Mode"
-
-[node name="FireworkController" type="Node2D" parent="PlayModeUI"]
-position = Vector2(224, -160)
-script = ExtResource("6_11r1j")
 
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
