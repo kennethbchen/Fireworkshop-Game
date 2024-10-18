@@ -59,7 +59,10 @@ func append_blank_flipbook():
 	
 	var new_flipbook: SpriteFrames = SpriteFrames.new()
 	new_flipbook.add_frame("default", create_new_frame())
+	new_flipbook.set_animation_speed("default", 10)
+	new_flipbook.set_animation_loop("default", false)
 	flipbooks.append(new_flipbook)
+	
 
 func delete_frame(frame_index: int = current_frame_index):
 

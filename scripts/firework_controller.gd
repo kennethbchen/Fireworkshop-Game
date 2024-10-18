@@ -36,5 +36,7 @@ func launch_firework():
 func enable():
 	enabled = true
 	
+	explosion_animations = %PlayerData.flipbooks
+	
 func disable():
 	enabled = false
