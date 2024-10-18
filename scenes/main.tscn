@@ -230,6 +230,20 @@ offset_right = 128.0
 offset_bottom = -9.0
 text = "v Draw Mode"
 
+[node name="PlayButton" type="Button" parent="PlayModeUI"]
+offset_left = 200.0
+offset_top = -40.0
+offset_right = 241.0
+offset_bottom = -9.0
+text = "Play"
+
+[node name="StopButton" type="Button" parent="PlayModeUI"]
+offset_left = 248.0
+offset_top = -40.0
+offset_right = 291.0
+offset_bottom = -9.0
+text = "Stop"
+
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_2o573")
@@ -260,5 +274,8 @@ script = ExtResource("4_x4p8e")
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
 [connection signal="pressed" from="CreateModeUI/PlayModeButton" to="Camera2D" method="goto_play_mode"]
 [connection signal="pressed" from="PlayModeUI/DrawModeButton" to="Camera2D" method="goto_draw_mode"]
+[connection signal="pressed" from="PlayModeUI/DrawModeButton" to="PlayModeUI/SubViewportContainer/SubViewport/FireworkController" method="disable"]
+[connection signal="pressed" from="PlayModeUI/PlayButton" to="PlayModeUI/SubViewportContainer/SubViewport/FireworkController" method="enable"]
+[connection signal="pressed" from="PlayModeUI/StopButton" to="PlayModeUI/SubViewportContainer/SubViewport/FireworkController" method="disable"]
 [connection signal="current_flipbook_changed" from="PlayerData" to="CreateModeUI/FlipbookNavigator" method="_on_current_flipbook_changed"]
 [connection signal="current_frame_changed" from="PlayerData" to="CreateModeUI/DrawingArea" method="_on_current_frame_changed"]

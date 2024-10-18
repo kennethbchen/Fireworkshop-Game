@@ -5,16 +5,12 @@ extends Node2D
 @export var rocket_animations: Array[SpriteFrames]
 @export var explosion_animations: Array[SpriteFrames]
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+var enabled: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if cumulative_probability(0.75, delta):
+	if enabled and cumulative_probability(0.75, delta):
 		launch_firework()
 
 # https://en.wikipedia.org/wiki/Exponential_distribution
@@ -36,3 +32,9 @@ func launch_firework():
 	add_child(new_firework)
 	new_firework.position.x = randi_range(-32, 32)
 	new_firework.init(rocket_animations.pick_random(), explosion_animations.pick_random())
+
+func enable():
+	enabled = true
+	
+func disable():
+	enabled = false
