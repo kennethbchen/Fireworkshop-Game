@@ -6,7 +6,9 @@ extends Node2D
 @onready var rocket_sprite: AnimatedSprite2D = $RocketSprite
 @onready var explosion_sprite: AnimatedSprite2D = $ExplosionSprite
 
-# Called when the node enters the scene tree for the first time.
+
+var children_remaining: int = 2
+
 func _ready():
 	init(rocket_animation, explosion_animation)
 
@@ -26,15 +28,20 @@ func init(rocket_animation: SpriteFrames, explosion_animation: SpriteFrames):
 		explosion_sprite.show()
 		explosion_sprite.play()
 		
-		explosion_sprite.animation_finished.connect(func():
-			explosion_sprite.queue_free()	
-			
-			)
+		children_remaining -= 1
 		
+		explosion_sprite.animation_finished.connect(func():
+			var tween = get_tree().create_tween()
+			tween.tween_property(explosion_sprite, "self_modulate", Color(1,1,1,0), 0.5)
+			tween.tween_callback(func():
+				explosion_sprite.queue_free()
+				
+				children_remaining -= 1
+				
+				)
+			)
 		)
-	
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if children_remaining <= 0:
+		queue_free()
