@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4biwa2ciins5"]
+
+[ext_resource type="Script" path="res://scripts/firework.gd" id="1_8nral"]
+[ext_resource type="SpriteFrames" uid="uid://4gq64comsfex" path="res://animations/firework_rocket_1.tres" id="2_78wbh"]
+[ext_resource type="SpriteFrames" uid="uid://c6amhny3q5yl7" path="res://animations/sample_explosion.tres" id="3_jscm2"]
+
+[node name="Firework" type="Node2D"]
+script = ExtResource("1_8nral")
+rocket_animation = ExtResource("2_78wbh")
+explosion_animation = ExtResource("3_jscm2")
+
+[node name="RocketSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="ExplosionSprite" type="AnimatedSprite2D" parent="."]
