@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=38 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -25,20 +25,25 @@
 [ext_resource type="AudioStream" uid="uid://bid0wb4vheshh" path="res://audio/firework_launch/launch_1.wav" id="11_ptbiw"]
 [ext_resource type="AudioStream" uid="uid://cn4ww8mi2xb1n" path="res://audio/firework_explosion/explosion_1.wav" id="12_scx8a"]
 [ext_resource type="SpriteFrames" uid="uid://c6amhny3q5yl7" path="res://animations/sample_explosion.tres" id="12_wq1f7"]
+[ext_resource type="Texture2D" uid="uid://bmu04rh4mp3dc" path="res://sprites/selection_box.png" id="14_mhj3g"]
+[ext_resource type="Texture2D" uid="uid://bufapgk85pup2" path="res://sprites/square_button/square_button_normal.png" id="16_sf2cm"]
+[ext_resource type="Texture2D" uid="uid://djqnwsip1qj4u" path="res://sprites/square_button/square_button_pressed.png" id="17_0yxqt"]
+[ext_resource type="Texture2D" uid="uid://b5ky4l25afiku" path="res://sprites/square_button/square_button_hover.png" id="18_7cp34"]
+[ext_resource type="Texture2D" uid="uid://bojialtc8euih" path="res://sprites/long_button/long_button_normal.png" id="19_5kk4o"]
+[ext_resource type="Texture2D" uid="uid://c7c6f7kj6y5ix" path="res://sprites/long_button/long_button_pressed.png" id="20_qcsgq"]
+[ext_resource type="Texture2D" uid="uid://dskvwdd83tp5h" path="res://sprites/long_button/long_button_hover.png" id="21_s1po2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqc15"]
+bg_color = Color(0.652302, 0.535339, 0.499742, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhad2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
-bg_color = Color(1, 1, 1, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.683077, 0.683077, 0.683077, 1)
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5j4h"]
+texture = ExtResource("14_mhj3g")
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2eaiv"]
 
@@ -67,6 +72,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Panel" type="Panel" parent="CreateModeUI"]
+z_index = -10
+layout_mode = 0
+offset_right = 450.0
+offset_bottom = 404.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wqc15")
+
 [node name="UI" type="TextureRect" parent="CreateModeUI"]
 layout_mode = 1
 anchors_preset = 8
@@ -82,6 +94,7 @@ texture = ExtResource("7_kl15m")
 metadata/_edit_lock_ = true
 
 [node name="DrawingArea" type="TextureRect" parent="CreateModeUI"]
+z_index = 1
 layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
@@ -154,10 +167,10 @@ texture_hover = ExtResource("11_p5osm")
 [node name="SwatchPicker" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 296.0
-offset_top = 149.0
-offset_right = 296.0
-offset_bottom = 149.0
+offset_left = 298.0
+offset_top = 132.0
+offset_right = 298.0
+offset_bottom = 132.0
 script = ExtResource("6_f3tm5")
 colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
 
@@ -175,7 +188,7 @@ offset_right = 32.0
 offset_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
+theme_override_styles/panel = SubResource("StyleBoxTexture_r5j4h")
 
 [node name="FlipbookNavigator" type="Control" parent="CreateModeUI"]
 layout_mode = 3
@@ -202,7 +215,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2eaiv")
 
 [node name="SelectionCursor" type="Panel" parent="CreateModeUI/FlipbookNavigator/Panel"]
-visible = false
 z_index = -1
 layout_mode = 0
 offset_left = 8.0
@@ -211,7 +223,7 @@ offset_right = 40.0
 offset_bottom = 48.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
+theme_override_styles/panel = SubResource("StyleBoxTexture_r5j4h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CreateModeUI/FlipbookNavigator"]
 layout_mode = 1
@@ -254,53 +266,148 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_k72q8")
 [node name="FlipbookFrameControls" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 248.0
-offset_top = 328.0
-offset_right = 432.0
-offset_bottom = 392.0
+offset_left = 285.0
+offset_top = 315.0
+offset_right = 373.0
+offset_bottom = 401.0
 
 [node name="VBoxContainer" type="GridContainer" parent="CreateModeUI/FlipbookFrameControls"]
-layout_mode = 0
-offset_left = 32.0
-offset_right = 99.0
+layout_mode = 1
+offset_right = 67.0
 offset_bottom = 66.0
 columns = 2
 
-[node name="AddFrameButton" type="Button" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
+[node name="AddFrameButton" type="TextureButton" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "Add new frame"
-text = "+"
+texture_normal = ExtResource("16_sf2cm")
+texture_pressed = ExtResource("17_0yxqt")
+texture_hover = ExtResource("18_7cp34")
 
-[node name="DeleteSelectedFrameButton" type="Button" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
+[node name="Label" type="Label" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer/AddFrameButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -17.5
+offset_right = 20.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeleteSelectedFrameButton" type="TextureButton" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "Delete current frame"
-text = "-"
+texture_normal = ExtResource("16_sf2cm")
+texture_pressed = ExtResource("17_0yxqt")
+texture_hover = ExtResource("18_7cp34")
 
-[node name="MoveLeftButton" type="Button" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
+[node name="Label" type="Label" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -17.5
+offset_right = 20.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveLeftButton" type="TextureButton" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "Move current frame left"
-text = "<"
+texture_normal = ExtResource("16_sf2cm")
+texture_pressed = ExtResource("17_0yxqt")
+texture_hover = ExtResource("18_7cp34")
 
-[node name="MoveRightButton" type="Button" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
+[node name="Label" type="Label" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer/MoveLeftButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -17.5
+offset_right = 20.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "<"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveRightButton" type="TextureButton" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tooltip_text = "Move current frame right"
-text = ">"
+texture_normal = ExtResource("16_sf2cm")
+texture_pressed = ExtResource("17_0yxqt")
+texture_hover = ExtResource("18_7cp34")
 
-[node name="PlayModeButton" type="Button" parent="CreateModeUI"]
+[node name="Label" type="Label" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer/MoveRightButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.5
+offset_top = -17.5
+offset_right = 20.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "> "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayModeButton" type="TextureButton" parent="CreateModeUI"]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 11.0
-offset_right = 113.0
-offset_bottom = 42.0
+offset_left = 6.0
+offset_top = 2.0
+offset_right = 118.0
+offset_bottom = 43.0
+texture_normal = ExtResource("19_5kk4o")
+texture_pressed = ExtResource("20_qcsgq")
+texture_hover = ExtResource("21_s1po2")
+
+[node name="Label" type="Label" parent="CreateModeUI/PlayModeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "^ Play Mode"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayModeUI" type="Node" parent="."]
 
@@ -329,26 +436,83 @@ explosion_sounds = Array[AudioStream]([ExtResource("12_scx8a")])
 
 [node name="Camera2D" type="Camera2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
 
-[node name="DrawModeButton" type="Button" parent="PlayModeUI"]
+[node name="DrawModeButton" type="TextureButton" parent="PlayModeUI"]
 offset_left = 8.0
 offset_top = -40.0
-offset_right = 128.0
-offset_bottom = -9.0
-text = "v Draw Mode"
+offset_right = 120.0
+offset_bottom = 1.0
+texture_normal = ExtResource("19_5kk4o")
+texture_pressed = ExtResource("20_qcsgq")
+texture_hover = ExtResource("21_s1po2")
 
-[node name="PlayButton" type="Button" parent="PlayModeUI"]
-offset_left = 200.0
-offset_top = -40.0
-offset_right = 241.0
-offset_bottom = -9.0
-text = "Play"
+[node name="Label" type="Label" parent="PlayModeUI/DrawModeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "V Draw Mode"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="StopButton" type="Button" parent="PlayModeUI"]
-offset_left = 248.0
-offset_top = -40.0
-offset_right = 291.0
-offset_bottom = -9.0
+[node name="PlayButton" type="TextureButton" parent="PlayModeUI"]
+offset_left = 126.0
+offset_top = -41.0
+offset_right = 238.0
+texture_normal = ExtResource("19_5kk4o")
+texture_pressed = ExtResource("20_qcsgq")
+texture_hover = ExtResource("21_s1po2")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PlayModeUI/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StopButton" type="TextureButton" parent="PlayModeUI"]
+offset_left = 244.0
+offset_top = -44.0
+offset_right = 356.0
+offset_bottom = -3.0
+texture_normal = ExtResource("19_5kk4o")
+texture_pressed = ExtResource("20_qcsgq")
+texture_hover = ExtResource("21_s1po2")
+
+[node name="Label" type="Label" parent="PlayModeUI/StopButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Stop"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerData" type="Node" parent="."]
 unique_name_in_owner = true
