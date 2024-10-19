@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=28 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -11,13 +11,21 @@
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 [ext_resource type="Script" path="res://scripts/firework_controller.gd" id="6_11r1j"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
+[ext_resource type="Texture2D" uid="uid://bdadtlhc46gtg" path="res://sprites/pencil_button/pencil_button_normal.png" id="6_lgtbe"]
 [ext_resource type="Texture2D" uid="uid://c8pmswn2xmwgj" path="res://sprites/ui.png" id="7_kl15m"]
+[ext_resource type="Texture2D" uid="uid://bikaxsgews3sj" path="res://sprites/pencil_button/pencil_button_pressed.png" id="7_njtke"]
+[ext_resource type="Texture2D" uid="uid://jeb7kvyq6m03" path="res://sprites/pencil_button/pencil_button_hover.png" id="8_bvipi"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
+[ext_resource type="Texture2D" uid="uid://bq6gi7cwviqm4" path="res://sprites/eraser_button/eraser_button_normal.png" id="9_slqom"]
+[ext_resource type="Texture2D" uid="uid://cv55iteip4y4s" path="res://sprites/eraser_button/eraser_button_pressed.png" id="10_1ouoa"]
 [ext_resource type="SpriteFrames" uid="uid://4gq64comsfex" path="res://animations/firework_rocket_1.tres" id="10_3sbcr"]
 [ext_resource type="PackedScene" uid="uid://b4biwa2ciins5" path="res://scenes/firework.tscn" id="10_7vwu2"]
+[ext_resource type="Texture2D" uid="uid://bfsrgio434vfa" path="res://sprites/eraser_button/eraser_button_hover.png" id="11_p5osm"]
 [ext_resource type="AudioStream" uid="uid://bid0wb4vheshh" path="res://audio/firework_launch/launch_1.wav" id="11_ptbiw"]
 [ext_resource type="AudioStream" uid="uid://cn4ww8mi2xb1n" path="res://audio/firework_explosion/explosion_1.wav" id="12_scx8a"]
 [ext_resource type="SpriteFrames" uid="uid://c6amhny3q5yl7" path="res://animations/sample_explosion.tres" id="12_wq1f7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhad2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tom0t"]
 bg_color = Color(1, 1, 1, 0)
@@ -80,28 +88,47 @@ offset_right = 1.0
 offset_bottom = 1.0
 script = ExtResource("4_swyph")
 
-[node name="Tools" type="VBoxContainer" parent="CreateModeUI"]
-offset_left = 288.0
-offset_top = 40.0
-offset_right = 343.0
-offset_bottom = 106.0
+[node name="ToolVisibilityClip" type="Panel" parent="CreateModeUI"]
+clip_contents = true
+offset_left = 276.0
+offset_top = 37.0
+offset_right = 352.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vhad2")
 
-[node name="PencilButton" type="Button" parent="CreateModeUI/Tools"]
-layout_mode = 2
-text = "Pencil"
+[node name="Tools" type="VBoxContainer" parent="CreateModeUI/ToolVisibilityClip"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -30.0
+offset_right = 62.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="EraserButton" type="Button" parent="CreateModeUI/Tools"]
+[node name="PencilButton" type="TextureButton" parent="CreateModeUI/ToolVisibilityClip/Tools"]
 layout_mode = 2
-text = "Erase
-"
+texture_normal = ExtResource("6_lgtbe")
+texture_pressed = ExtResource("7_njtke")
+texture_hover = ExtResource("8_bvipi")
+
+[node name="EraserButton" type="TextureButton" parent="CreateModeUI/ToolVisibilityClip/Tools"]
+layout_mode = 2
+texture_normal = ExtResource("9_slqom")
+texture_pressed = ExtResource("10_1ouoa")
+texture_hover = ExtResource("11_p5osm")
 
 [node name="SwatchPicker" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 296.0
-offset_top = 120.0
+offset_top = 149.0
 offset_right = 296.0
-offset_bottom = 120.0
+offset_bottom = 149.0
 script = ExtResource("6_f3tm5")
 colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
 
@@ -289,8 +316,8 @@ script = ExtResource("3_ovh5a")
 [node name="EraserTool" type="Node" parent="PlayerControls"]
 script = ExtResource("4_x4p8e")
 
-[connection signal="pressed" from="CreateModeUI/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
-[connection signal="pressed" from="CreateModeUI/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
+[connection signal="pressed" from="CreateModeUI/ToolVisibilityClip/Tools/PencilButton" to="PlayerControls" method="change_tool_from_name" binds= ["pencil"]]
+[connection signal="pressed" from="CreateModeUI/ToolVisibilityClip/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/AddFrameButton" to="PlayerData" method="append_new_frame"]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
 [connection signal="pressed" from="CreateModeUI/PlayModeButton" to="Camera2D" method="goto_play_mode"]
