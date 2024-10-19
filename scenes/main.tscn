@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=39 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://bojialtc8euih" path="res://sprites/long_button/long_button_normal.png" id="19_5kk4o"]
 [ext_resource type="Texture2D" uid="uid://c7c6f7kj6y5ix" path="res://sprites/long_button/long_button_pressed.png" id="20_qcsgq"]
 [ext_resource type="Texture2D" uid="uid://dskvwdd83tp5h" path="res://sprites/long_button/long_button_hover.png" id="21_s1po2"]
+[ext_resource type="Texture2D" uid="uid://bb5oxvxyuxlvl" path="res://sprites/ui-play.png" id="22_32s78"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqc15"]
 bg_color = Color(0.652302, 0.535339, 0.499742, 1)
@@ -411,6 +412,22 @@ vertical_alignment = 1
 
 [node name="PlayModeUI" type="Node" parent="."]
 
+[node name="UI" type="TextureRect" parent="PlayModeUI"]
+z_index = 1
+offset_top = -405.0
+offset_right = 450.0
+texture = ExtResource("22_32s78")
+
+[node name="Panel" type="Panel" parent="PlayModeUI/UI"]
+z_index = -10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wqc15")
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PlayModeUI"]
 offset_top = -400.0
 offset_right = 90.0
@@ -437,10 +454,10 @@ explosion_sounds = Array[AudioStream]([ExtResource("12_scx8a")])
 [node name="Camera2D" type="Camera2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
 
 [node name="DrawModeButton" type="TextureButton" parent="PlayModeUI"]
-offset_left = 8.0
-offset_top = -40.0
-offset_right = 120.0
-offset_bottom = 1.0
+offset_left = 9.0
+offset_top = -45.0
+offset_right = 121.0
+offset_bottom = -4.0
 texture_normal = ExtResource("19_5kk4o")
 texture_pressed = ExtResource("20_qcsgq")
 texture_hover = ExtResource("21_s1po2")
@@ -463,9 +480,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="PlayModeUI"]
-offset_left = 126.0
-offset_top = -41.0
-offset_right = 238.0
+offset_left = 127.0
+offset_top = -46.0
+offset_right = 239.0
+offset_bottom = -5.0
 texture_normal = ExtResource("19_5kk4o")
 texture_pressed = ExtResource("20_qcsgq")
 texture_hover = ExtResource("21_s1po2")
@@ -489,10 +507,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StopButton" type="TextureButton" parent="PlayModeUI"]
-offset_left = 244.0
-offset_top = -44.0
-offset_right = 356.0
-offset_bottom = -3.0
+offset_left = 245.0
+offset_top = -49.0
+offset_right = 357.0
+offset_bottom = -8.0
 texture_normal = ExtResource("19_5kk4o")
 texture_pressed = ExtResource("20_qcsgq")
 texture_hover = ExtResource("21_s1po2")
