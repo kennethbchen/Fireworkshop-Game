@@ -25,7 +25,6 @@
 [ext_resource type="AudioStream" uid="uid://bid0wb4vheshh" path="res://audio/firework_launch/launch_1.wav" id="11_ptbiw"]
 [ext_resource type="AudioStream" uid="uid://cn4ww8mi2xb1n" path="res://audio/firework_explosion/explosion_1.wav" id="12_scx8a"]
 [ext_resource type="SpriteFrames" uid="uid://c6amhny3q5yl7" path="res://animations/sample_explosion.tres" id="12_wq1f7"]
-[ext_resource type="Theme" uid="uid://cf4o03b3xx7wv" path="res://default_theme.tres" id="15_cbng0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhad2"]
 
@@ -40,6 +39,8 @@ expand_margin_left = 4.0
 expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2eaiv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k72q8"]
 
@@ -65,33 +66,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("15_cbng0")
 
-[node name="Beam" type="Panel" parent="CreateModeUI"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 312.0
-offset_right = 352.0
-offset_bottom = 320.0
-theme_type_variation = &"PrimaryBeam"
-
-[node name="Beam2" type="Panel" parent="CreateModeUI"]
-layout_mode = 0
-offset_left = 360.0
-offset_top = 8.0
-offset_right = 749.0
-offset_bottom = 16.0
-rotation = 1.57079
-theme_type_variation = &"PrimaryBeam"
-
-[node name="BorderPanel" type="Panel" parent="CreateModeUI"]
-offset_right = 450.0
-offset_bottom = 405.0
-mouse_filter = 2
-theme_type_variation = &"PrimaryPanel"
-
-[node name="TextureRect" type="TextureRect" parent="CreateModeUI"]
-visible = false
+[node name="UI" type="TextureRect" parent="CreateModeUI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,14 +81,8 @@ grow_vertical = 2
 texture = ExtResource("7_kl15m")
 metadata/_edit_lock_ = true
 
-[node name="DrawingAreaPanel" type="Panel" parent="CreateModeUI"]
-offset_left = 12.0
-offset_top = 44.0
-offset_right = 276.0
-offset_bottom = 308.0
-theme_type_variation = &"SecondaryPanel"
-
 [node name="DrawingArea" type="TextureRect" parent="CreateModeUI"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
 offset_right = 48.0
@@ -130,9 +100,10 @@ script = ExtResource("4_swyph")
 
 [node name="ToolVisibilityClip" type="Panel" parent="CreateModeUI"]
 clip_contents = true
+layout_mode = 0
 offset_left = 276.0
 offset_top = 37.0
-offset_right = 352.0
+offset_right = 351.0
 offset_bottom = 140.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vhad2")
 
@@ -228,8 +199,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("15_cbng0")
-theme_type_variation = &"SecondaryPanel"
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2eaiv")
 
 [node name="SelectionCursor" type="Panel" parent="CreateModeUI/FlipbookNavigator/Panel"]
 visible = false
@@ -262,7 +232,6 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_k72q8")
 [node name="ScrollContainer" type="ScrollContainer" parent="CreateModeUI/FlipbookNavigator/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("15_cbng0")
 follow_focus = true
 vertical_scroll_mode = 0
 
@@ -326,6 +295,7 @@ tooltip_text = "Move current frame right"
 text = ">"
 
 [node name="PlayModeButton" type="Button" parent="CreateModeUI"]
+layout_mode = 0
 offset_left = 12.0
 offset_top = 11.0
 offset_right = 113.0

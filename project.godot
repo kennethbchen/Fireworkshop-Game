@@ -34,10 +34,6 @@ folder_colors={
 "res://sprites/": "yellow"
 }
 
-[gui]
-
-theme/custom="res://default_theme.tres"
-
 [input]
 
 debug_quit_game={
