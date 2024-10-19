@@ -3,12 +3,25 @@ extends Node2D
 @export var rocket_animation: SpriteFrames
 @export var explosion_animation: SpriteFrames
 
+@export var rocket_sound: AudioStream
+@export var explosion_sound: AudioStream
+
 @onready var rocket_sprite: AnimatedSprite2D = $RocketSprite
 @onready var explosion_sprite: AnimatedSprite2D = $ExplosionSprite
 
-var children_remaining: int = 2
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-func init(rocket_animation: SpriteFrames, explosion_animation: SpriteFrames):
+var children_remaining: int = 3
+
+func init(rocket_animation: SpriteFrames, explosion_animation: SpriteFrames, rocket_sound: AudioStream, explosion_sound: AudioStream):
+	
+	rocket_sound = rocket_sound
+	explosion_sound = explosion_sound
+	
+	audio_player.pitch_scale = randf_range(0.9, 1.1)
+	
+	audio_player.stream = rocket_sound
+	audio_player.play()
 	
 	rocket_sprite.sprite_frames = rocket_animation
 	rocket_sprite.offset.y = -rocket_animation.get_frame_texture("default", 0).get_size().y / 2
@@ -23,6 +36,12 @@ func init(rocket_animation: SpriteFrames, explosion_animation: SpriteFrames):
 		rocket_sprite.hide()
 		explosion_sprite.show()
 		explosion_sprite.play()
+		
+		audio_player.stream = explosion_sound
+		audio_player.play()
+		audio_player.finished.connect(func():
+			children_remaining -= 1
+		)
 		
 		children_remaining -= 1
 		

@@ -5,6 +5,9 @@ extends Node2D
 @export var rocket_animations: Array[SpriteFrames]
 @export var explosion_animations: Array[SpriteFrames]
 
+@export var rocket_sounds: Array[AudioStream]
+@export var explosion_sounds: Array[AudioStream]
+
 var enabled: bool = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +34,7 @@ func launch_firework():
 	var new_firework = firework_scene.instantiate()
 	add_child(new_firework)
 	new_firework.position.x = randi_range(-32, 32)
-	new_firework.init(rocket_animations.pick_random(), explosion_animations.pick_random())
+	new_firework.init(rocket_animations.pick_random(), explosion_animations.pick_random(), rocket_sounds.pick_random(), explosion_sounds.pick_random())
 
 func enable():
 	enabled = true

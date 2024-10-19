@@ -12,3 +12,5 @@ explosion_animation = ExtResource("3_jscm2")
 [node name="RocketSprite" type="AnimatedSprite2D" parent="."]
 
 [node name="ExplosionSprite" type="AnimatedSprite2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
