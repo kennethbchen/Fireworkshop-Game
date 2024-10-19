@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=21 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/tools/eraser_tool.gd" id="4_x4p8e"]
 [ext_resource type="Script" path="res://scripts/firework_controller.gd" id="6_11r1j"]
 [ext_resource type="Script" path="res://scripts/swatch_picker.gd" id="6_f3tm5"]
+[ext_resource type="Texture2D" uid="uid://c8pmswn2xmwgj" path="res://sprites/ui.png" id="7_kl15m"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
 [ext_resource type="SpriteFrames" uid="uid://4gq64comsfex" path="res://animations/firework_rocket_1.tres" id="10_3sbcr"]
 [ext_resource type="PackedScene" uid="uid://b4biwa2ciins5" path="res://scenes/firework.tscn" id="10_7vwu2"]
@@ -49,11 +50,25 @@ script = ExtResource("1_255dg")
 
 [node name="CreateModeUI" type="Node" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="CreateModeUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -202.5
+offset_right = 225.0
+offset_bottom = 202.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_kl15m")
+
 [node name="DrawingArea" type="TextureRect" parent="CreateModeUI"]
-offset_left = 8.0
-offset_top = 40.0
-offset_right = 40.0
-offset_bottom = 72.0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = 48.0
+offset_bottom = 80.0
 scale = Vector2(8, 8)
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
@@ -66,9 +81,9 @@ offset_bottom = 1.0
 script = ExtResource("4_swyph")
 
 [node name="Tools" type="VBoxContainer" parent="CreateModeUI"]
-offset_left = 312.0
+offset_left = 288.0
 offset_top = 40.0
-offset_right = 367.0
+offset_right = 343.0
 offset_bottom = 106.0
 
 [node name="PencilButton" type="Button" parent="CreateModeUI/Tools"]
@@ -83,9 +98,9 @@ text = "Erase
 [node name="SwatchPicker" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 320.0
+offset_left = 296.0
 offset_top = 120.0
-offset_right = 320.0
+offset_right = 296.0
 offset_bottom = 120.0
 script = ExtResource("6_f3tm5")
 colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
@@ -109,9 +124,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_tom0t")
 [node name="FlipbookNavigator" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 8.0
+offset_left = 16.0
 offset_top = 328.0
-offset_right = 240.0
+offset_right = 272.0
 offset_bottom = 392.0
 script = ExtResource("9_2c0ij")
 
@@ -183,8 +198,9 @@ offset_bottom = 392.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CreateModeUI/FlipbookFrameControls"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 32.0
+offset_right = 213.0
+offset_bottom = 66.0
 
 [node name="AddFrameButton" type="Button" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer"]
 layout_mode = 2
@@ -195,10 +211,10 @@ layout_mode = 2
 text = "Delete Selected Frame"
 
 [node name="PlayModeButton" type="Button" parent="CreateModeUI"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 109.0
-offset_bottom = 39.0
+offset_left = 12.0
+offset_top = 11.0
+offset_right = 113.0
+offset_bottom = 42.0
 text = "^ Play Mode"
 
 [node name="PlayModeUI" type="Node" parent="."]
