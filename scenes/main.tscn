@@ -286,6 +286,7 @@ tooltip_text = "Add new frame"
 texture_normal = ExtResource("16_sf2cm")
 texture_pressed = ExtResource("17_0yxqt")
 texture_hover = ExtResource("18_7cp34")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer/AddFrameButton"]
 layout_mode = 1
@@ -313,6 +314,7 @@ tooltip_text = "Delete current frame"
 texture_normal = ExtResource("16_sf2cm")
 texture_pressed = ExtResource("17_0yxqt")
 texture_hover = ExtResource("18_7cp34")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton"]
 layout_mode = 1
@@ -339,6 +341,7 @@ tooltip_text = "Move current frame left"
 texture_normal = ExtResource("16_sf2cm")
 texture_pressed = ExtResource("17_0yxqt")
 texture_hover = ExtResource("18_7cp34")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer/MoveLeftButton"]
 layout_mode = 1
@@ -365,6 +368,7 @@ tooltip_text = "Move current frame right"
 texture_normal = ExtResource("16_sf2cm")
 texture_pressed = ExtResource("17_0yxqt")
 texture_hover = ExtResource("18_7cp34")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="CreateModeUI/FlipbookFrameControls/VBoxContainer/MoveRightButton"]
 layout_mode = 1
@@ -560,6 +564,8 @@ script = ExtResource("4_x4p8e")
 [connection signal="pressed" from="CreateModeUI/ToolVisibilityClip/Tools/EraserButton" to="PlayerControls" method="change_tool_from_name" binds= ["eraser"]]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/AddFrameButton" to="PlayerData" method="append_new_frame"]
 [connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/DeleteSelectedFrameButton" to="PlayerData" method="delete_frame"]
+[connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/MoveLeftButton" to="PlayerData" method="move_selected_left"]
+[connection signal="pressed" from="CreateModeUI/FlipbookFrameControls/VBoxContainer/MoveRightButton" to="PlayerData" method="move_selected_right"]
 [connection signal="pressed" from="CreateModeUI/PlayModeButton" to="Camera2D" method="goto_play_mode"]
 [connection signal="pressed" from="PlayModeUI/DrawModeButton" to="Camera2D" method="goto_draw_mode"]
 [connection signal="pressed" from="PlayModeUI/DrawModeButton" to="PlayModeUI/SubViewportContainer/SubViewport/FireworkController" method="disable"]

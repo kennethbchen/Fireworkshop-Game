@@ -55,6 +55,26 @@ func select_frame(frame_idx: int):
 		current_frame_index = frame_idx
 		current_frame_changed.emit(get_current_frame())
 
+func move_selected_left():
+	if current_frame_index <= 0:
+		return
+		
+	var temp = get_current_frame()
+	get_current_flipbook().set_frame("default", current_frame_index, get_current_flipbook().get_frame_texture("default", current_frame_index - 1))
+	get_current_flipbook().set_frame("default", current_frame_index - 1, temp)
+	select_frame(current_frame_index - 1)
+	current_flipbook_changed.emit(get_current_flipbook())
+	
+func move_selected_right():
+	if current_frame_index + 1 >= get_current_flipbook().get_frame_count("default"):
+		return
+		
+	var temp = get_current_frame()
+	get_current_flipbook().set_frame("default", current_frame_index, get_current_flipbook().get_frame_texture("default", current_frame_index + 1))
+	get_current_flipbook().set_frame("default", current_frame_index + 1, temp)
+	select_frame(current_frame_index + 1)
+	current_flipbook_changed.emit(get_current_flipbook())
+
 func append_blank_flipbook():
 	
 	var new_flipbook: SpriteFrames = SpriteFrames.new()
