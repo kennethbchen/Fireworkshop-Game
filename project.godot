@@ -24,6 +24,10 @@ window/size/window_height_override=810
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/simplemenu/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
