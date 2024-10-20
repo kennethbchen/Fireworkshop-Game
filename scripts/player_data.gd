@@ -110,10 +110,11 @@ func append_new_frame():
 	
 func create_new_frame(flipbook_index: int = current_flipbook_index) -> ImageTexture:
 	
-	var img = Image.create(frame_width, frame_height, false, Image.FORMAT_BPTC_RGBA)
+	var img = Image.create(frame_width, frame_height, false, Image.FORMAT_RGBA8)
 	
-	# Image starts as compressed I guess
-	img.decompress()
+	if img.is_compressed():
+		# Probably don't need this
+		img.decompress()
 	
 	return ImageTexture.create_from_image(img)
 	
