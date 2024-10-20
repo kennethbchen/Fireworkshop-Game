@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=47 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c8pmswn2xmwgj" path="res://sprites/ui.png" id="7_kl15m"]
 [ext_resource type="Texture2D" uid="uid://bikaxsgews3sj" path="res://sprites/pencil_button/pencil_button_pressed.png" id="7_njtke"]
 [ext_resource type="Texture2D" uid="uid://jeb7kvyq6m03" path="res://sprites/pencil_button/pencil_button_hover.png" id="8_bvipi"]
+[ext_resource type="Texture2D" uid="uid://ch58axfkk2eby" path="res://sprites/draw-background.png" id="8_cw135"]
 [ext_resource type="Script" path="res://scripts/flipbook_navigator.gd" id="9_2c0ij"]
 [ext_resource type="Texture2D" uid="uid://bq6gi7cwviqm4" path="res://sprites/eraser_button/eraser_button_normal.png" id="9_slqom"]
 [ext_resource type="Texture2D" uid="uid://cv55iteip4y4s" path="res://sprites/eraser_button/eraser_button_pressed.png" id="10_1ouoa"]
@@ -55,9 +56,6 @@ bg_color = Color(0, 0, 0, 0.219608)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abc8n"]
 bg_color = Color(0.15, 0.15, 0.15, 0.929412)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqc15"]
-bg_color = Color(0.652302, 0.535339, 0.499742, 1)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhad2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5j4h"]
@@ -70,6 +68,9 @@ expand_margin_bottom = 7.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2eaiv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k72q8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqc15"]
+bg_color = Color(0.640901, 0.489823, 0.400175, 1)
 
 [node name="Main" type="Node2D"]
 
@@ -310,13 +311,13 @@ grow_vertical = 2
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="Panel" parent="CreateModeUI"]
+[node name="Panel" type="TextureRect" parent="CreateModeUI"]
 z_index = -10
 layout_mode = 0
 offset_right = 450.0
 offset_bottom = 404.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wqc15")
+texture = ExtResource("8_cw135")
 
 [node name="UI" type="TextureRect" parent="CreateModeUI"]
 layout_mode = 1
