@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=45 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -44,11 +44,15 @@ target_nodes = Array[NodePath]([NodePath("../HelpUI")])
 
 [sub_resource type="Resource" id="Resource_2x1ti"]
 script = ExtResource("2_pr2h7")
-button_path = NodePath("../HelpUI/Panel/HideHelpButton")
+button_path = NodePath("../HelpUI/Help1/VBoxContainer/HideHelpButton")
 action_type = 0
 target_nodes = Array[NodePath]([NodePath("../HelpUI")])
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p52iw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldh5f"]
+bg_color = Color(0, 0, 0, 0.219608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abc8n"]
+bg_color = Color(0.15, 0.15, 0.15, 0.929412)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqc15"]
 bg_color = Color(0.652302, 0.535339, 0.499742, 1)
@@ -93,24 +97,207 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_p52iw")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5f")
 
-[node name="Panel" type="Panel" parent="HelpUI"]
+[node name="Help1" type="Panel" parent="HelpUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 82.0
-offset_top = 74.0
-offset_right = -83.0
-offset_bottom = -74.0
+offset_left = 15.0
+offset_top = 73.0
+offset_right = -183.0
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_abc8n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HelpUI/Help1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HideHelpButton" type="Button" parent="HelpUI/Panel"]
+[node name="Label" type="Label" parent="HelpUI/Help1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Welcome to Fireworkshop!
+This program lets you draw your own fireworks frame-by-frame and plays a firework show based on your creations.
+Close this menu to start"
+autowrap_mode = 2
+
+[node name="HideHelpButton" type="TextureButton" parent="HelpUI/Help1/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("19_5kk4o")
+texture_pressed = ExtResource("20_qcsgq")
+texture_hover = ExtResource("21_s1po2")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HelpUI/Help1/VBoxContainer/HideHelpButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -11.5
+offset_right = 52.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Close Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Help2" type="Control" parent="HelpUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="HelpUI/Help2"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Exit"
+offset_left = 304.0
+offset_top = 31.0
+offset_right = 432.0
+offset_bottom = 55.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HelpUI/Help2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = " v Pick Tool"
+
+[node name="Panel2" type="Panel" parent="HelpUI/Help2"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 175.0
+offset_right = 439.0
+offset_bottom = 202.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HelpUI/Help2/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = " < Pick Color"
+
+[node name="Panel8" type="Panel" parent="HelpUI/Help2"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 3.0
+offset_right = 435.0
+offset_bottom = 30.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HelpUI/Help2/Panel8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = " < Open This Menu Again"
+
+[node name="Panel3" type="Panel" parent="HelpUI/Help2"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 43.0
+offset_right = 268.0
+offset_bottom = 70.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HelpUI/Help2/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = " v Draw In This Box"
+
+[node name="Panel4" type="Panel" parent="HelpUI/Help2"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 301.0
+offset_right = 254.0
+offset_bottom = 328.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HelpUI/Help2/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = " v Click frames to select them"
+
+[node name="Panel6" type="Panel" parent="HelpUI/Help2"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 333.0
+offset_right = 284.0
+offset_bottom = 360.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HelpUI/Help2/Panel6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Add new frame >"
+
+[node name="Panel7" type="Panel" parent="HelpUI/Help2"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 367.0
+offset_right = 283.0
+offset_bottom = 394.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HelpUI/Help2/Panel7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Move frame left / right >"
+
+[node name="Panel5" type="Panel" parent="HelpUI/Help2"]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 233.0
+offset_right = 430.0
+offset_bottom = 314.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="HelpUI/Help2/Panel5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "    Delete 
+    Current
+  v Frame"
 
 [node name="CreateModeUI" type="Control" parent="."]
 layout_mode = 3
@@ -119,6 +306,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="CreateModeUI"]
 z_index = -10
