@@ -28,6 +28,14 @@ func _on_current_flipbook_changed(new_flipbook: SpriteFrames):
 			var child: TextureRect = TextureRect.new()
 			frame_parent.add_child(child)
 			
+			var background: ColorRect = ColorRect.new()
+			background.color = Color.DIM_GRAY
+			background.size = Vector2(%PlayerData.frame_width, %PlayerData.frame_height)
+			background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			background.z_index = -1
+			
+			child.add_child(background)
+			
 			child.gui_input.connect(func(event): _on_frame_gui_input(event, init_children_count + i))
 			
 	
