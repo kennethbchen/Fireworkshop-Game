@@ -9,7 +9,8 @@ extends Node2D
 func _ready():
 	Input.use_accumulated_input = false
 
-func _input(event):
+func _unhandled_input(event):
+	
 	if event is InputEventMouseButton and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			current_tool.on_mouse_pressed(get_global_mouse_position(), drawing_area)

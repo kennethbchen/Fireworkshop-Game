@@ -1,10 +1,12 @@
-[gd_scene load_steps=39 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=44 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
 [ext_resource type="Script" path="res://scripts/debug_commands.gd" id="1_255dg"]
+[ext_resource type="Script" path="res://addons/simplemenu/simple_menu/simple_menu.gd" id="1_gk22b"]
 [ext_resource type="Script" path="res://scripts/global_tool_settings.gd" id="1_om5vq"]
 [ext_resource type="Script" path="res://scripts/player_controls.gd" id="2_3u3oc"]
+[ext_resource type="Script" path="res://addons/simplemenu/simple_menu_button_binding.gd" id="2_pr2h7"]
 [ext_resource type="Script" path="res://scripts/drawing_area.gd" id="3_c1rli"]
 [ext_resource type="Script" path="res://scripts/tools/pencil_tool.gd" id="3_ovh5a"]
 [ext_resource type="Script" path="res://scripts/grid_drawer.gd" id="4_swyph"]
@@ -34,6 +36,20 @@
 [ext_resource type="Texture2D" uid="uid://dskvwdd83tp5h" path="res://sprites/long_button/long_button_hover.png" id="21_s1po2"]
 [ext_resource type="Texture2D" uid="uid://bb5oxvxyuxlvl" path="res://sprites/ui-play.png" id="22_32s78"]
 
+[sub_resource type="Resource" id="Resource_eb5ny"]
+script = ExtResource("2_pr2h7")
+button_path = NodePath("../CreateModeUI/HelpButton")
+action_type = 1
+target_nodes = Array[NodePath]([NodePath("../HelpUI")])
+
+[sub_resource type="Resource" id="Resource_2x1ti"]
+script = ExtResource("2_pr2h7")
+button_path = NodePath("../HelpUI/Panel/HideHelpButton")
+action_type = 0
+target_nodes = Array[NodePath]([NodePath("../HelpUI")])
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p52iw"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqc15"]
 bg_color = Color(0.652302, 0.535339, 0.499742, 1)
 
@@ -52,6 +68,10 @@ expand_margin_bottom = 7.0
 
 [node name="Main" type="Node2D"]
 
+[node name="SimpleMenu" type="Node" parent="."]
+script = ExtResource("1_gk22b")
+actions = Array[ExtResource("2_pr2h7")]([SubResource("Resource_eb5ny"), SubResource("Resource_2x1ti")])
+
 [node name="PlayModeViewportGuide" type="Marker2D" parent="."]
 position = Vector2(0, -405)
 
@@ -64,6 +84,33 @@ script = ExtResource("1_5hvaw")
 
 [node name="DebugCommands" type="Node" parent="."]
 script = ExtResource("1_255dg")
+
+[node name="HelpUI" type="CanvasLayer" parent="."]
+
+[node name="MouseBlocker" type="Panel" parent="HelpUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p52iw")
+
+[node name="Panel" type="Panel" parent="HelpUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = 74.0
+offset_right = -83.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HideHelpButton" type="Button" parent="HelpUI/Panel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Exit"
 
 [node name="CreateModeUI" type="Control" parent="."]
 layout_mode = 3
@@ -78,6 +125,7 @@ z_index = -10
 layout_mode = 0
 offset_right = 450.0
 offset_bottom = 404.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wqc15")
 
 [node name="UI" type="TextureRect" parent="CreateModeUI"]
@@ -91,6 +139,7 @@ offset_right = 450.0
 offset_bottom = 405.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("7_kl15m")
 metadata/_edit_lock_ = true
 
@@ -102,6 +151,7 @@ offset_top = 48.0
 offset_right = 48.0
 offset_bottom = 80.0
 scale = Vector2(8, 8)
+mouse_filter = 2
 script = ExtResource("3_c1rli")
 metadata/_edit_group_ = true
 
@@ -110,6 +160,7 @@ z_index = -1
 anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0
+mouse_filter = 2
 script = ExtResource("4_swyph")
 
 [node name="ToolVisibilityClip" type="Panel" parent="CreateModeUI"]
@@ -411,6 +462,33 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "^ Play Mode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HelpButton" type="TextureButton" parent="CreateModeUI"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 2.0
+offset_right = 238.0
+offset_bottom = 43.0
+texture_normal = ExtResource("19_5kk4o")
+texture_pressed = ExtResource("20_qcsgq")
+texture_hover = ExtResource("21_s1po2")
+
+[node name="Label" type="Label" parent="CreateModeUI/HelpButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.5
+offset_right = 20.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Help :)"
 horizontal_alignment = 1
 vertical_alignment = 1
 

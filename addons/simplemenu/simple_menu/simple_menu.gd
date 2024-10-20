@@ -7,8 +7,8 @@ func _ready():
 	
 	for action in actions:
 		
-		var button = get_node(action.button_path) as Button
-		assert(button is Button, "button_path must refer to a button")
+		var button = get_node(action.button_path)
+		assert(button is BaseButton, "button_path must refer to a button")
 		
 		if action.calls_on_nodes():
 			
