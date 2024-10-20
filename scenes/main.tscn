@@ -181,10 +181,10 @@ text = " v Pick Tool"
 
 [node name="Panel2" type="Panel" parent="HelpUI/Help2"]
 layout_mode = 0
-offset_left = 340.0
-offset_top = 175.0
-offset_right = 439.0
-offset_bottom = 202.0
+offset_left = 271.0
+offset_top = 172.0
+offset_right = 370.0
+offset_bottom = 199.0
 metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="HelpUI/Help2/Panel2"]
@@ -194,7 +194,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = " < Pick Color"
+text = " Pick Color >"
 
 [node name="Panel8" type="Panel" parent="HelpUI/Help2"]
 layout_mode = 0
@@ -409,12 +409,12 @@ texture_hover = ExtResource("11_p5osm")
 [node name="SwatchPicker" type="Control" parent="CreateModeUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 298.0
-offset_top = 132.0
-offset_right = 298.0
-offset_bottom = 132.0
+offset_left = 384.0
+offset_top = 15.0
+offset_right = 384.0
+offset_bottom = 15.0
 script = ExtResource("6_f3tm5")
-colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
+colors = Array[Color]([Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0.17, 0.17, 1), Color(1, 0.568333, 0.26, 1), Color(0.94879, 0.849116, 0.252699, 1), Color(0.2673, 0.99, 0.423885, 1), Color(0.2184, 0.56472, 0.78, 1), Color(0.35728, 0.1624, 0.58, 1), Color(0.587733, 0.192, 0.64, 1)])
 
 [node name="SwatchContainer" type="GridContainer" parent="CreateModeUI/SwatchPicker"]
 layout_mode = 0
