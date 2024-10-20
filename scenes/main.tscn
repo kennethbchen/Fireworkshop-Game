@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://i7vtjolmol5c"]
+[gd_scene load_steps=46 format=3 uid="uid://i7vtjolmol5c"]
 
 [ext_resource type="Script" path="res://scripts/player_data.gd" id="1_2o573"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_5hvaw"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://c7c6f7kj6y5ix" path="res://sprites/long_button/long_button_pressed.png" id="20_qcsgq"]
 [ext_resource type="Texture2D" uid="uid://dskvwdd83tp5h" path="res://sprites/long_button/long_button_hover.png" id="21_s1po2"]
 [ext_resource type="Texture2D" uid="uid://bb5oxvxyuxlvl" path="res://sprites/ui-play.png" id="22_32s78"]
+[ext_resource type="Texture2D" uid="uid://c55yc8y7ltjrb" path="res://sprites/play-background.png" id="31_1r2cc"]
 
 [sub_resource type="Resource" id="Resource_eb5ny"]
 script = ExtResource("2_pr2h7")
@@ -713,6 +714,9 @@ audio_listener_enable_2d = true
 size = Vector2i(90, 70)
 render_target_update_mode = 4
 
+[node name="Background" type="Sprite2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
+texture = ExtResource("31_1r2cc")
+
 [node name="FireworkController" type="Node2D" parent="PlayModeUI/SubViewportContainer/SubViewport"]
 position = Vector2(0, 32)
 script = ExtResource("6_11r1j")
@@ -751,10 +755,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="PlayModeUI"]
-offset_left = 127.0
-offset_top = -46.0
-offset_right = 239.0
-offset_bottom = -5.0
+offset_left = 124.0
+offset_top = -49.0
+offset_right = 236.0
+offset_bottom = -8.0
 texture_normal = ExtResource("19_5kk4o")
 texture_pressed = ExtResource("20_qcsgq")
 texture_hover = ExtResource("21_s1po2")
